@@ -1,0 +1,17 @@
+
+
+
+{% extends 'quotes/base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Quote of the Day: Keke Palmer</h1>
+<table>
+    <tr>
+        <td>{{single_quote}}</td>
+        <td><img src={% static single_image %}></td>
+    </tr>
+</table>
+
+
+{% endblock %}

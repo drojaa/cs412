@@ -1,0 +1,113 @@
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    margin: 0% 5% 0% 5%; 
+}
+
+
+main {
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    overflow-y: auto;
+}
+
+nav {
+    margin-top: 15px;
+    background-color: rgb(255, 255, 255);
+    list-style: none;
+    display: flex; 
+    justify-content: flex-end;
+}
+
+li {
+    padding-right: 18px;
+    flex-direction: row;
+}
+
+
+#base {
+   
+   text-decoration: none;
+   color: rgb(141, 141, 141);
+   font-weight: lighter;
+   font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   font-size: small;
+}
+
+h1 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    background-color: rgb(219, 246, 219);
+    color: rgb(112, 112, 112);
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: lighter;
+}
+
+h2 {
+    font-weight: bold;
+    color: rgb(219, 246, 219);
+}
+
+h3, h5 {
+    font-weight: lighter;
+}
+
+table {
+    margin-top: 20px;
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  td {
+    padding: 10px;
+    text-align: left;
+    text-align: center; 
+    vertical-align: middle;
+  }
+  
+  /* Top border for the table */
+  table, tr:first-child {
+    border-top: 2px solid rgb(207, 204, 204);
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: lighter;
+  }
+ 
+  
+  /* Column separators */
+  td:not(:last-child) {
+    border-right: 2px solid rgb(207, 204, 204);
+   
+  }
+
+  img {
+    border: rgb(219, 246, 219) 5px solid;
+    max-width: 300px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  #green-underline {
+    font-weight: bold;
+    color: rgb(219, 246, 219);
+}
+
+footer {
+    text-align: center;
+    background-color: rgb(219, 246, 219);
+    color: rgb(112, 112, 112);
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: lighter;
+}
+
+a {
+    color: rgb(112, 112, 112);
+    text-decoration: underline;
+}

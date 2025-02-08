@@ -1,0 +1,17 @@
+
+
+
+{% extends 'quotes/base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>All Quotes : Keke Palmer</h1>
+<table>
+    {% for quote, image in quotes_map_images %}
+        <tr>
+            <td>{{ quote }}</td>
+            <td><img src="{% static image %}" alt="Quote Image"></td> 
+        </tr>
+    {% endfor %}
+</table>
+{% endblock %}

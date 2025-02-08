@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello, World!</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<nav>
+  <li><a href="{% url 'home_page' %}"> Home</a></li>
+  <li><a href="{% url 'about_page' %}"> About</a></li>
+</nav>
+<body>
+  {% block content %}
+  {% endblock %}
+
+</body>
+<footer>
+    The current time is {{time}}
+    This is letter one: {{letter1}}
+    This is letter two: {{letter2}}
+</footer>
+</html>
