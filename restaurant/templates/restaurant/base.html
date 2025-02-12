@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Restaurant</title>
+    <link rel="stylesheet" href="{% static 'restaurant.css' %}">
+</head>
+<body>
+    <nav>
+        <li><a id="base" href="{% url 'main' %}">Saweetie Treats Co Main Page</a></li>
+        <li><a id="base"href="{% url 'order' %}">Place an Order</a></li>
+    </nav>
+    <main>
+    {% block content %}
+    {% endblock %}
+    </main>
+</body>
+<footer>
+    <p>Web Application created by Derinell Rojas</p>
+    <p>Page Generated at: {{time}}</p>
+    <p>If you'd like, you can connect with me on <a href="https://www.linkedin.com/in/derinellrojas/">LinkedIn</a></p>
+</footer>
+</html>

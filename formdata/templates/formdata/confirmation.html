@@ -1,0 +1,46 @@
+<!-- formdata/templates/formdata/confirmation.html -->
+{% extends 'formdata/base.html' %}
+{% load static %}
+{% block content %}
+<nav>
+    <li><a id="base" href="{% url 'main' %}">Saweetie Treats Co Main Page</a></li>
+    <li><a id="base"href="{% url 'order' %}">Place an Order</a></li>
+</nav>
+<h1>Confirmation Page</h1>
+<div id="form-styling">
+    <h4>
+        Hey there {{customerName}} 🍪 !!
+    </h4>
+    <br>
+    <br>
+    <h4>
+        Your order has been placed, and your 'Saweetie Treats' are baking to perfection as we speak! 
+    </h4>
+    <br>
+    <br>
+    <h4>Your baked goods will be ready at {{readyTime}} </h4>
+    <br>
+    <br>
+    <h4>Your selected treats:</h4>
+    <ul class="confirmation">
+    {% for item in menuItem %}
+        <li>{{ item }}</li>
+    {% endfor %}
+    </ul> 
+    <ul class="confirmation">
+            <li>{{ todaySpecial }}</li>
+        </ul> 
+    <br>
+    <br>
+    <h4>Your total cost is ${{totalCost}}, thank you for choosing us! </h4>
+    <h4>
+        Sincerely, <br> Saweetie Treats Co 🧁🎀🫧
+    </h4>
+
+</div>
+<footer>
+    <p>Web Application created by Derinell Rojas</p>
+    <p>Page Generated at: {{time}}</p>
+    <p>If you'd like, you can connect with me on <a href="https://www.linkedin.com/in/derinellrojas/">LinkedIn</a></p>
+</footer>
+{% endblock %}
