@@ -4,6 +4,7 @@ from django.http import HttpRequest, HttpResponse
 # Create your views here.
 import time 
 
+#view function for main page
 def main(request):
 
     template_name = "restaurant/main.html"
@@ -11,7 +12,7 @@ def main(request):
           "time": time.ctime(), 
     }
     return render(request, template_name, context)
-
+#view function for order page
 def order(request):
 
     template_name = "restaurant/order.html"
@@ -19,7 +20,7 @@ def order(request):
           "time": time.ctime(), 
     }
     return render(request, template_name, context)
-
+#view function for confirmation page
 def confirmation(request):
 
     template_name = "quotes/about.html"

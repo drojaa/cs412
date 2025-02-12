@@ -4,13 +4,13 @@ from django.http import HttpResponse
 # Create your views here.
 import time
 import random
-
+#function to make form appear
 def show_form(request):
     '''Show the web page with the form.'''
 
     template_name = "formdata/show_form.html"
     return render(request, template_name)
-
+#function called when pressing submit button
 def submit(request):
     '''Process the form submission'''
     template_name = "formdata/confirmation.html"
@@ -27,17 +27,23 @@ def submit(request):
         customerName = request.POST["customerName"]
         menuItem = request.POST.getlist("menuItem")
         todaySpecial = request.POST.get("todaySpecial", "")
-
+        #maps selected menu items to price, and add it to total cost
         total_cost += sum(menu_prices.get(item, 0) for item in menuItem)
+        #if user selects today special, then it will add the special's price to total
         if todaySpecial:
             special_prices = {
                 "Dark Chocolate Covered Strawberries": 10.00,
             }
             total_cost += special_prices.get(todaySpecial, 0)
+        #coverts to dollar format 
         total_cost = "{:.2f}".format(total_cost)
+
         curr_time = time.time()
+        #converts min to seconds, return betwwen 30min - 1hr
         random_min = random.randint(1800, 3600)
+        # add random value to current time 
         readyTime_seconds = curr_time + random_min
+        # assign readyTime
         readyTime = time.ctime(readyTime_seconds)
         context = {
             'customerName' : customerName,
