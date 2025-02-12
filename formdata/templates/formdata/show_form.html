@@ -6,7 +6,6 @@
 <div>
 <form id="survey-form" action="{% url 'submit' %}" method="POST">
     {% csrf_token %}
-        <input type="hidden" name="mailto" value="droja@bu.edu">
         <table id="survey-table">
     <!-- Menu Items -->
     <tr class="survey-tr">
