@@ -1,0 +1,60 @@
+<!-- formdata/templates/formdata/form.html -->
+{% extends 'formdata/base.html' %}
+
+{% block content %}
+<h1>Order a Saweetie Treat</h1>
+<div>
+<form id="survey-form" action="{% url 'submit' %}" method="POST">
+    {% csrf_token %}
+        <input type="hidden" name="mailto" value="droja@bu.edu">
+        <table id="survey-table">
+    <!-- Menu Items -->
+    <tr class="survey-tr">
+        <td class="survey-td">
+            <label class="survey-label" for="menuItem">Select Your Treats:</label>
+        </td>
+        <td class="survey-td">
+            <input name="menuItem" type="checkbox" value="Red Velvet Cake Pops" optional> Red Velvet Cake Pops ($3)<br>
+            <input name="menuItem" type="checkbox" value="Chocolate Truffle Cake Pops" optional> Chocolate Truffle Cake Pops ($3)<br>
+            <input name="menuItem" type="checkbox" value="Churro Spice Cake Pops" optional> Churro Spice Cake Pops ($3)<br>
+            <input name="menuItem" type="checkbox" value="Salted Caramel Swirl" optional> Salted Caramel Swirl 6" Cheesecake ($12)<br>
+            <input name="menuItem" type="checkbox" value="Coconut Cloud Cupcakes" optional> Coconut Cloud Cupcakes ($5)<br>
+            <input name="menuItem" type="checkbox" value="Lemon Raspberry Cheese Danish" optional> Lemon Raspberry Cheese Danish ($3)<br>
+        </td>
+    </tr>
+            </tr>
+            <!-- Today's Special  -->
+            <tr class="survey-tr">
+                <td class="survey-td"><label class="survey-label" for="todaySpecial">Today's Special:</label class="todaySpecial"></td class="survey-td">
+                <td class="survey-td">
+                <input name="todaySpecial"  type="checkbox" value="Dark Chocolate Covered Strawberries" optional> Dark Chocolate Covered Strawberries ($10 for 5) <br>
+                </td class="survey-td">
+            </tr>
+            <!-- Special Instructions -->
+            <tr class="survey-tr">
+                <td class="survey-td"><label class="survey-label" for="instructions">Special Instructions</label class="survey-label"></td class="survey-td">
+                <td class="survey-td"><textarea name="instructions" rows="10" cols="80" placeholder="If any, type your response here please.." optional></textarea></td class="survey-td">
+            </tr>
+            <!-- Customer's Name -->
+            <tr class="survey-tr" id="name">
+                <td class="survey-td"><label class="survey-label" for="customerName">Name:</label class="survey-label"></td class="survey-td">
+                <td class="survey-td"><input name="customerName" type="text" required></td class="survey-td">
+            </tr>
+            <!-- Customer's Phone -->
+            <tr class="survey-tr">
+                <td class="survey-td"><label class="survey-label" for="customerPhone">Phone:</label class="survey-label"></td class="survey-td">
+                <td class="survey-td"><input name="customerPhone" type="tel" required></td class="survey-td">
+            </tr>
+            <!-- Customer's Email -->
+            <tr class="survey-tr">
+                <td class="survey-td"><label class="survey-label" for="customerEmail">Email:</label class="survey-label"></td class="survey-td">
+                <td class="survey-td"><input name="customerEmail" type="email" required></td class="survey-td">
+            </tr>
+            <!-- Submit Button -->
+            <tr class="survey-tr">
+                <td class="survey-td" colspan="2"><input type="submit" value="Place Order"></td class="survey-td">
+            </tr>
+        </table>
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+from django.shortcuts import render
+from django.http import HttpRequest, HttpResponse
+
+# Create your views here.
+import time 
+
+def main(request):
+
+    template_name = "restaurant/main.html"
+    context = {
+          "time": time.ctime(), 
+    }
+    return render(request, template_name, context)
+
+def order(request):
+
+    template_name = "restaurant/order.html"
+    context = {
+          "time": time.ctime(), 
+    }
+    return render(request, template_name, context)
+
+def confirmation(request):
+
+    template_name = "quotes/about.html"
+    context = {
+          "time": time.ctime(), 
+    }
+    return render(request, template_name, context)
+
+
+

@@ -1,1 +1,1 @@
- https://cs-webapps.bu.edu/droja/cs412/quotes/
+https://cs-webapps.bu.edu/droja/quotes/

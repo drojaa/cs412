@@ -1,19 +1,14 @@
-
-
-<!-- Base template including nav, main, and footer -->
-
 {% load static %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Quotes</title>
-    <link rel="stylesheet" href="{% static 'quotes.css' %}">
+    <title>Restaurant</title>
+    <link rel="stylesheet" href="{% static 'restaurant.css' %}">
 </head>
 <body>
     <nav>
-        <li><a id="base" href="{% url 'quote' %}">Quote of the Day</a></li>
-        <li><a id="base"href="{% url 'show_all' %}">Show all Quotes</a></li>
-        <li><a id="base" href="{% url 'about' %}">About Keke</a></li>
+        <li><a id="base" href="{% url 'main' %}">Saweetie Treats Co Main Page</a></li>
+        <li><a id="base"href="{% url 'order' %}">Place an Order</a></li>
     </nav>
     <main>
     {% block content %}

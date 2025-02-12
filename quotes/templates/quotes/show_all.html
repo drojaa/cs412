@@ -1,5 +1,5 @@
 
-
+<!-- Template showing all of the quotes and images  -->
 
 {% extends 'quotes/base.html' %}
 {% load static %}
@@ -7,6 +7,7 @@
 {% block content %}
 <h1>All Quotes : Keke Palmer</h1>
 <table>
+    <!-- For loop to go through the quotes_map_images list -->
     {% for quote, image in quotes_map_images %}
         <tr>
             <td>{{ quote }}</td>
