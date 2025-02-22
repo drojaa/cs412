@@ -1,0 +1,24 @@
+
+
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+<header>
+    <h1 id="header-name">Mini Facebook</h1>
+</header>
+    <div class="profiles-container-single">
+ 
+            <div class="profile-card-single">
+                
+                <!-- Profile Image -->
+                <img src="{{ profile.image }}" alt="{{ profile.first_name }}'s profile image" class="profile-image" width="250" height="250">
+                
+                <!-- Profile Details -->
+                <div class="profile-details-single">
+                    <h2 id="name">{{ profile.first_name }} {{ profile.last_name }}</h2>
+                    <p>{{ profile.city }}</p>
+                    <p>{{ profile.email }}</p>
+                </div>
+            </div>
+    </div>
+{% endblock %}

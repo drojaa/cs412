@@ -1,15 +1,21 @@
 {% extends 'mini_fb/base.html' %}
 
 {% block content %}
+<header>
+    <h1 id="header-name">Mini Facebook</h1>
+</header>
     <div class="profiles-container">
         {% for profile in profiles %}
             <div class="profile-card">
                 <!-- Profile Image -->
-                <img src="{{ profile.image }}" alt="{{ profile.first_name }}'s profile image" class="profile-image" width="130" height="130">
-                
+                <a href="{% url 'show_profile' profile.pk %}">
+                    <img src="{{ profile.image }}" alt="{{ profile.first_name }}'s profile image" class="profile-image" width="130" height="130">
+                </a>
                 <!-- Profile Details -->
                 <div class="profile-details">
-                    <p>{{ profile.first_name }} {{ profile.last_name }}</p>
+                    <a href="{% url 'show_profile' profile.pk %}">
+                    <p id="name">{{ profile.first_name }} {{ profile.last_name }}</p>
+                    </a>
                     <p>{{ profile.city }}</p>
                 </div>
             </div>

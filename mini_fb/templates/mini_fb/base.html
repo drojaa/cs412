@@ -8,10 +8,8 @@
     <link rel="stylesheet" href="{% static 'mini_fb.css' %}">
 </head>
 <body>
-    <header>
-        <h1 id="header-name">Mini Facebook</h1>
-    </header>
     <nav>
+        <li><a id="base"href="{% url 'show_all_profiles' %}">All Profiles</a></li>
     </nav>
     <main>
     {% block content %}
