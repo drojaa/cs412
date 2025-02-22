@@ -1,0 +1,25 @@
+<!-- base.html template -->
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mini Facebook</title>
+    <link rel="stylesheet" href="{% static 'mini_fb.css' %}">
+</head>
+<body>
+    <header>
+        <h1 id="header-name">Mini Facebook</h1>
+    </header>
+    <nav>
+    </nav>
+    <main>
+    {% block content %}
+    {% endblock %}
+    </main>
+</body>
+<footer>
+    <p>Web Application created by Derinell Rojas</p>
+    <p>If you'd like, you can connect with me on <a href="https://www.linkedin.com/in/derinellrojas/">LinkedIn</a></p>
+</footer>
+</html>
