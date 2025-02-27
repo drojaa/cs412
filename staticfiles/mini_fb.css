@@ -1,3 +1,10 @@
+/* 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Date: 2025-02-27 
+Description: CSS file for the mini_fb project, containing styling rules for the application's layout and design.
+*/
+
 
 * {
     margin: 0;
@@ -18,18 +25,29 @@ main {
 
 nav {
     margin-top: 15px;
-    background-color: #1877F2;;
-    list-style: none;
-    display: flex; 
+    background-color: #1877F2;
+    display: flex;
     justify-content: flex-end;
+    padding: 10px; /* Adds spacing around the links */
 }
 
-li {
+nav ul {
+    display: flex;
+    list-style: none; /* Removes bullets */
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin: 0;
     padding-left: 18px;
     padding-right: 18px;
     flex-direction: row;
     border: 1px solid white;
 }
+
+
 
 footer {
     text-align: center;
@@ -44,7 +62,7 @@ footer {
 #header-name {
     border: 2px solid #1877F2;
     color: rgb(5, 5, 181);
-    background-color: pink;
+    background-color: white;
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
@@ -119,7 +137,11 @@ a {
 p{
     text-decoration: none;
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: pink;
+    color: rgb(4, 4, 209);
+}
+strong {
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
 }
 
 #name {
@@ -135,11 +157,92 @@ p{
     font-size: small;
  }
 
- #status-message {
-    border: #ccc solid 2px;
-    color: white;
+
+#message {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+ #status-container {
+    margin-top: 10px;
+   
  }
 
- #status {
-    border: #ccc solid 5px;
+ #message-name {
+    color: blue;
  }
+
+ h3 {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(5, 5, 181);
+    text-align: center;
+    text-decoration: underline;
+ }
+
+ th {
+    color: blue;  /* Change to the color you want */
+    text-align: right;
+
+}
+
+#form-header {
+   
+    text-align: center;
+    color: rgb(5, 5, 181);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
+}
+#form {
+   margin: auto;
+   margin-top: 15px;
+   border: #ccc 1px dashed;
+   padding: 5px;
+   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#submit {
+    background-color: #3d8aee;
+    border: #ccc solid 2px;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    color: rgb(5, 5, 181);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold ;
+    border-radius: 5px;
+  
+}
+
+#submit:hover {
+    background-color: #76a1db;  
+}
+#publish:hover {
+    background-color: #76a1db;  
+}
+
+#submit-button {
+    padding-top: 15px;
+    text-align: center;
+    margin: auto;
+}
+
+main {
+    height: 100vh; /* Adjust as needed */
+    overflow-y: auto; /* Enables vertical scrolling */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+
+#publish {
+    text-decoration: none;
+    background-color:#4b87d5;
+    padding: 5px;
+    max-width: max-content;
+    margin: auto;
+    border-radius: 5px;
+    border: rgb(5, 5, 181) solid 2px;
+
+}
+
+#publish-a {
+    color: rgb(5, 5, 181);
+}
+
