@@ -3,10 +3,10 @@
 
 from django.urls import path
 from django.conf import settings
-from .views import ShowAllProfilesView
-from .views import ShowAllProfilePageView
+from .views import *
 
 urlpatterns = [
    path('', ShowAllProfilesView.as_view(), name="show_all_profiles"), 
-   path('profile/<int:pk>', ShowAllProfilePageView.as_view(), name="show_profile")
+   path('profile/<int:pk>', ShowAllProfilePageView.as_view(), name="show_profile"),
+   path('profile/create', CreateProfileView.as_view(), name="create_profile")
 ]

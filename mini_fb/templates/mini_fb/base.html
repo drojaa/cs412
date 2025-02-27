@@ -9,7 +9,10 @@
 </head>
 <body>
     <nav>
-        <li><a id="base"href="{% url 'show_all_profiles' %}">All Profiles</a></li>
+        <ul>
+            <li><a id="base" href="{% url 'show_all_profiles' %}">All Profiles</a></li>
+            <li><a id="base" href="{% url 'create_profile' %}">Create Profile</a></li>
+        </ul>
     </nav>
     <main>
     {% block content %}

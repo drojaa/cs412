@@ -3,6 +3,7 @@ from django.db import models
 # Create your models here.
 
 from django.db import models
+from django.urls import reverse
 import time
 # Define data models for mini_fb
 # Create your models here.
@@ -24,7 +25,9 @@ class Profile(models.Model):
         '''returns all messages for specifc Profile'''
         status_messages = StatusMessage.objects.filter(profile=self).order_by('timestamp')
         return status_messages
-
+    def get_absolute_url(self):
+        '''Return a URL to display once instance of this object'''
+        return reverse('show_profile', kwargs={'pk':self.pk})
 
 class StatusMessage(models.Model): 
     '''Encapsulate the data of Facebook Status Message for each Profile'''

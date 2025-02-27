@@ -1,0 +1,19 @@
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
+<header>
+    <h1 id="header-name">Mini Facebook</h1>
+</header>
+<h1 id="form-header">Create a New Profile</h1>
+<form action="{% url 'create_profile'%}" method="POST">
+    {% csrf_token %}
+<table id="form">
+    {{form.as_table}}
+</table>
+<div id="submit-button">
+<input id="submit" type="submit" name="submit" value="Submit">
+</div>
+</form>
+
+{% endblock %}
