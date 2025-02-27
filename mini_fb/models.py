@@ -1,3 +1,10 @@
+"""
+Author: Derinell Rojas
+Email: droja@bu.edu
+Date: 2025-02-27
+Description: Defines Profile and StatusMessage Model
+"""
+
 from django.db import models
 
 # Create your models here.
@@ -23,7 +30,7 @@ class Profile(models.Model):
         return f'{self.first_name} {self.last_name}'
     def get_status_messages(self):
         '''returns all messages for specifc Profile'''
-        status_messages = StatusMessage.objects.filter(profile=self).order_by('timestamp')
+        status_messages = StatusMessage.objects.filter(profile=self).order_by('-timestamp')
         return status_messages
     def get_absolute_url(self):
         '''Return a URL to display once instance of this object'''

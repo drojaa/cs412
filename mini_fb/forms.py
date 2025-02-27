@@ -1,6 +1,12 @@
+"""
+Author: Derinell Rojas
+Email: droja@bu.edu
+Date: 2025-02-27
+Description: Defines the forms we use CRUD with
+"""
 from django import forms
 from .models import Profile, StatusMessage
-#defines the forms we use CRUD
+
 
 class CreateProfileForm(forms.ModelForm):
     '''A form to add Profile to the database'''
@@ -16,3 +22,16 @@ class CreateProfileForm(forms.ModelForm):
     city = forms.CharField(label="City", required=True)
     email = forms.EmailField(label="Email", required=True)
     image = forms.CharField(label="Profile Picture", required=True)
+
+class CreateStatusMessageForm(forms.ModelForm):
+    '''A form to add Status message to database'''
+    class Meta:
+        '''associate this form with a model to our database'''
+        model = StatusMessage
+        fields = ["message"]
+    message = forms.CharField(
+        label="Message",
+        required=True,
+        widget=forms.Textarea(attrs={"rows": 4, "cols": 50})  # Optional: Adjust size
+    )
+    

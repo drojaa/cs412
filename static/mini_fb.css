@@ -1,3 +1,10 @@
+/* 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Date: 2025-02-27 
+Description: CSS file for the mini_fb project, containing styling rules for the application's layout and design.
+*/
+
 
 * {
     margin: 0;
@@ -208,6 +215,9 @@ strong {
 #submit:hover {
     background-color: #76a1db;  
 }
+#publish:hover {
+    background-color: #76a1db;  
+}
 
 #submit-button {
     padding-top: 15px;
@@ -220,3 +230,19 @@ main {
     overflow-y: auto; /* Enables vertical scrolling */
     overflow-x: hidden; /* Prevents horizontal scrolling */
 }
+
+#publish {
+    text-decoration: none;
+    background-color:#4b87d5;
+    padding: 5px;
+    max-width: max-content;
+    margin: auto;
+    border-radius: 5px;
+    border: rgb(5, 5, 181) solid 2px;
+
+}
+
+#publish-a {
+    color: rgb(5, 5, 181);
+}
+

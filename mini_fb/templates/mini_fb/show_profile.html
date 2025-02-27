@@ -1,3 +1,9 @@
+<!-- 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Date: 2025-02-27 
+Description: template of form to show an indiv. profile for mini_fb
+-->
 {% extends 'mini_fb/base.html' %}
 
 {% block content %}
@@ -37,6 +43,10 @@
                         <br>
                     </div>
                     {% endfor %}
+                    <h5 id="publish">
+                        <a id=publish-a href="{% url 'create_status' profile.id%}"> Publish Status</a>
+                       
+                    </h5>
                 </div>
             </td>
         </tr>

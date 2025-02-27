@@ -1,4 +1,9 @@
-#url paths for mini_fb project
+"""
+Author: Derinell Rojas
+Email: droja@bu.edu
+Date: 2025-02-27
+Description: Urls for mini_fb project
+"""
 
 
 from django.urls import path
@@ -7,6 +12,7 @@ from .views import *
 
 urlpatterns = [
    path('', ShowAllProfilesView.as_view(), name="show_all_profiles"), 
+   path('profile/create', CreateProfileView.as_view(), name="create_profile"),
    path('profile/<int:pk>', ShowAllProfilePageView.as_view(), name="show_profile"),
-   path('profile/create', CreateProfileView.as_view(), name="create_profile")
+   path('profile/<int:pk>/create_status', CreateStatusMessageView.as_view(), name="create_status")
 ]

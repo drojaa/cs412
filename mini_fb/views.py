@@ -1,7 +1,16 @@
+"""
+Author: Derinell Rojas
+Email: droja@bu.edu
+Date: 2025-02-27
+Description: Functions to display singular Profiles, all Profiles, and forms to 
+publish a status and create a new profile
+"""
+
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
 from .models import Profile
-from .forms import CreateProfileForm
+from .forms import CreateProfileForm, CreateStatusMessageForm
+from django.urls import reverse
 # Create your views here.
 import time
 # function is used to display all profiles at once
@@ -26,4 +35,32 @@ class CreateProfileView(CreateView):
     form_class = CreateProfileForm
     template_name = "mini_fb/create_profile_form.html"
 
-   
+class CreateStatusMessageView(CreateView):
+    form_class = CreateStatusMessageForm
+    template_name = "mini_fb/create_status_form.html"
+    def get_success_url(self):
+
+        '''Provide a URL to redirect after creating a new comment'''
+        '''Inspects data and find foreign key of article and attatching it'''
+        pk = self.kwargs['pk']
+
+        #call reverse function
+        return reverse('show_profile', kwargs={'pk': pk})
+    def get_context_data(self):
+        '''Returm dictionary of context variables'''
+        context = super().get_context_data()
+        # find/add the article
+        pk = self.kwargs['pk']
+        profile = Profile.objects.get(pk = pk)
+
+        context['profile'] = profile
+        return context
+
+    def form_valid(self, form):
+        '''Inspects data and find foreign key of article and attatching it'''
+        pk = self.kwargs['pk']
+        profile = Profile.objects.get(pk = pk)
+        form.instance.profile = profile 
+        #delegate the work to the superclass
+        return super().form_valid(form)
+    

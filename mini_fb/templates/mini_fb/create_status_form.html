@@ -2,8 +2,9 @@
 Author: Derinell Rojas
 Email: droja@bu.edu 
 Date: 2025-02-27 
-Description: template of form to create a profile for mini_fb
+Description: template of form to create a status for mini_fb
 -->
+
 {% extends 'mini_fb/base.html' %}
 
 {% block content %}
@@ -11,14 +12,14 @@ Description: template of form to create a profile for mini_fb
 <header>
     <h1 id="header-name">Mini Facebook</h1>
 </header>
-<h1 id="form-header">Create a New Profile</h1>
-<form action="{% url 'create_profile'%}" method="POST">
+<h3 id="form-header">Publish a New Status Message for '{{profile.first_name}}'</h1>
+<form  method="POST">
     {% csrf_token %}
 <table id="form">
     {{form.as_table}} <!--Obtains form from form.py thats associated to this html file-->
 </table>
 <div id="submit-button">
-<input id="submit" type="submit" name="submit" value="Submit">
+<input id="submit" type="submit" name="submit" value="Create Status">
 </div>
 </form>
 

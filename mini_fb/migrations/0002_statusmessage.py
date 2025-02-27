@@ -2,7 +2,13 @@
 
 import django.db.models.deletion
 from django.db import migrations, models
-
+"""
+Author: Derinell Rojas
+Email: droja@bu.edu
+Date: 2025-02-27
+Description: Migration file that create Status model with fields including 
+profile reference, message, timestamp and status id
+"""
 
 class Migration(migrations.Migration):
 
