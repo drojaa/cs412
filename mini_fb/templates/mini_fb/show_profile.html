@@ -18,8 +18,7 @@ Description: template of form to show an indiv. profile for mini_fb
             <td style="width: 50%; vertical-align: top;">
                 <div class="profile-card-single">
                     <!-- Profile Image -->
-                    <img src="{{ profile.image }}" alt="{{ profile.first_name }}'s profile image" class="profile-image" width="250" height="250">
-
+                    <img src="{{ profile.image_file }}" alt="{{ profile.first_name }}'s profile image" class="profile-image" width="250" height="250">
                     <!-- Profile Details -->
                     <div class="profile-details-single">
                         <h2 id="name">{{ profile.first_name }} {{ profile.last_name }}</h2>
@@ -33,16 +32,25 @@ Description: template of form to show an indiv. profile for mini_fb
             
             <td style="width: 50%; vertical-align: top;">
                 <h3>Status Board</h3>
+             
                 <div id="status-container">
+                <br>
+
                     {% for message in profile.get_status_messages %}
                     <div id="status">
                         <strong>by <span id="message-name">{{ message.profile.first_name }}</span> at {{ message.timestamp }}</strong>
                         <p id="message">
                             {{ message.message }}
                         </p>
+                        {% for img in message.get_images %}
+                        <img src='{{ img.img_file.img_file.url}}' alt='{{ img.img_file.img_file.url }}' style="border-radius: 5px; width: 130px; height: 130px;">
+                        {% endfor %}            
                         <br>
+                      
                     </div>
+                   <br>
                     {% endfor %}
+                   
                     <h5 id="publish">
                         <a id=publish-a href="{% url 'create_status' profile.id%}"> Publish Status</a>
                        

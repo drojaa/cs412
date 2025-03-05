@@ -23,7 +23,7 @@ class Profile(models.Model):
     last_name = models.TextField(blank=True)
     city = models.TextField(blank=True)
     email = models.TextField(blank=True)
-    image = models.TextField(blank=True)
+    image_file = models.TextField(blank=True)
 
     def __str__(self):
         '''Return a string representation of this Profile object.'''
@@ -47,3 +47,20 @@ class StatusMessage(models.Model):
     def __str__(self):
         '''Returns a string representation of this Status Message'''
         return f'{self.message}'
+
+    def get_images(self):
+        '''Returns all images associated with this Status Message'''
+        all_imgs = StatusImage.objects.filter(stat_msg=self)
+        return all_imgs
+    
+   
+class Image(models.Model):
+    '''Encap Image for Status Message'''
+    profile = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    img_file = models.ImageField(blank=True) # an actual image
+    timestamp =  models.DateTimeField(auto_now=True)
+
+class StatusImage(models.Model):
+    '''Encap Image for Status Message'''
+    img_file = models.ForeignKey(Image, on_delete=models.CASCADE)
+    stat_msg = models.ForeignKey(StatusMessage, on_delete=models.CASCADE)

@@ -15,7 +15,7 @@ Description: template of form to show all profiles for mini_fb
             <div class="profile-card">
                 <!-- Profile Image -->
                 <a href="{% url 'show_profile' profile.pk %}">
-                    <img src="{{ profile.image }}" alt="{{ profile.first_name }}'s profile image" class="profile-image" width="130" height="130">
+                    <img src="{{ profile.image_file }}" alt="{{ profile.first_name }}'s profile image" class="profile-image" width="130" height="130">
                 </a>
                 <!-- Profile Details -->
                 <div class="profile-details">
