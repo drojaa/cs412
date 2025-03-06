@@ -215,7 +215,7 @@ strong {
 #submit:hover {
     background-color: #76a1db;  
 }
-#publish:hover {
+#crud:hover {
     background-color: #76a1db;  
 }
 
@@ -231,7 +231,8 @@ main {
     overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 
-#publish {
+#crud {
+    display: inline;
     text-decoration: none;
     background-color:#4b87d5;
     padding: 5px;
@@ -242,7 +243,7 @@ main {
 
 }
 
-#publish-a {
+#crud-a {
     color: rgb(5, 5, 181);
 }
 
@@ -261,4 +262,12 @@ border: black solid 2px;
 #files {
     text-align: center;
     margin-top: 5px;
+}
+#crud-contain{
+   display: flex;
+   gap: 5px;
+}
+#crud {
+    display: inline;
+    border: black 2px solid;
 }

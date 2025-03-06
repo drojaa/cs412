@@ -2,9 +2,8 @@
 Author: Derinell Rojas
 Email: droja@bu.edu 
 Date: 2025-02-27 
-Description: template of form to create a status for mini_fb
+Description: template of form to update a profile for mini_fb
 -->
-
 {% extends 'mini_fb/base.html' %}
 
 {% block content %}
@@ -12,23 +11,17 @@ Description: template of form to create a status for mini_fb
 <header>
     <h1 id="header-name">Mini Facebook</h1>
 </header>
-<h3 id="form-header">Publish a New Status Message for '{{profile.first_name}}'</h1>
-<form  method="POST" enctype="multipart/form-data" >
+<h1 id="form-header">Update Profile</h1>
+<form action="{% url 'update_profile' profile.pk %}" method="POST">
     {% csrf_token %}
 <table id="form">
     {{form.as_table}} <!--Obtains form from form.py thats associated to this html file-->
 </table>
-<div id="files" >
-    <input type="file" name = "files" multiple />
-</div>
-
 <div id="submit-button">
-<input id="submit" type="submit" name="submit" value="Create Status">
-
+<input id="submit" type="submit" name="submit" value="Update">
 <h5 id="cancel-btn">
     <a id="cancel" href="{% url 'show_profile' profile.pk %}">Cancel</a> 
 </h5>
-
 </div>
 </form>
 

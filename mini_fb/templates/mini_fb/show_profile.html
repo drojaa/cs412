@@ -24,8 +24,20 @@ Description: template of form to show an indiv. profile for mini_fb
                         <h2 id="name">{{ profile.first_name }} {{ profile.last_name }}</h2>
                         <p>{{ profile.city }}</p>
                         <p>{{ profile.email }}</p>
+                       
+                    </div>
+                    <br>
+                    <br>
+                    <div id="crud-contain">
+                        <h5 id="crud">
+                            <a id=crud-a href="{% url 'create_status' profile.id%}";> Publish Status</a>
+                        </h5>
+                        <h5 id="crud">
+                            <a id=crud-a href="{% url 'update_profile' profile.id%}"> Update Profile</a> 
+                        </h5>
                     </div>
                 </div>
+                
             </td>
 
             <!-- Status Messages Column -->
@@ -51,10 +63,6 @@ Description: template of form to show an indiv. profile for mini_fb
                    <br>
                     {% endfor %}
                    
-                    <h5 id="publish">
-                        <a id=publish-a href="{% url 'create_status' profile.id%}"> Publish Status</a>
-                       
-                    </h5>
                 </div>
             </td>
         </tr>

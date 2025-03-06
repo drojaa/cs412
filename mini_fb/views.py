@@ -7,9 +7,9 @@ publish a status and create a new profile
 """
 
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from .models import Profile, Image, StatusImage
-from .forms import CreateProfileForm, CreateStatusMessageForm
+from .forms import CreateProfileForm, CreateStatusMessageForm, UpdateProfileForm
 from django.urls import reverse
 # Create your views here.
 import time
@@ -73,3 +73,7 @@ class CreateStatusMessageView(CreateView):
         #delegate the work to the superclass
         return super().form_valid(form)
     
+class UpdateProfileView(UpdateView):
+        model = Profile
+        form_class = UpdateProfileForm
+        template_name = "mini_fb/update_profile_form.html"
