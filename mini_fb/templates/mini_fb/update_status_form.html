@@ -1,0 +1,38 @@
+<!-- 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Date: 2025-02-27 
+Description: template of form to update a status for mini_fb
+-->
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
+<header>
+    <h1 id="header-name">Mini Facebook</h1>
+</header>
+<h2 id="form-header-delete">Update a Status Message</h2>
+
+
+<!-- Form to Delete -->
+<div id="status-update">
+<div style="border: 2px dashed white; max-width: max-content; padding: 5px;">
+ <form id="status-update" action="{% url 'update_status' statusmessage.pk %}" method="POST">
+    {%csrf_token%}
+    {{form.as_table}}
+ </div>
+    <div style="margin-top:5px ;">
+ 
+    <input id="crud" type="submit" value="Update"> 
+     <!-- Form to Cancel -->
+ <form action="{% url 'show_profile' statusmessage.profile.pk %}" method="GET">
+    {%csrf_token%}
+        <input id="crud" type="submit" value="Cancel"> 
+   
+ </form>
+</div>
+ </form>
+</div>
+
+
+ {% endblock %}

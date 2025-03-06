@@ -45,3 +45,14 @@ class UpdateProfileForm (forms.ModelForm):
     email = forms.EmailField(label="Email", required=False)
     image_file = forms.CharField(label="Profile Picture", required=False)
 
+class UpdateStatusMessageForm(forms.ModelForm):
+    ''' A form to handle an update to a Status Message'''
+    class Meta:
+        '''associate this form with a model to our database'''
+        model = StatusMessage
+        fields = ['message']
+    message = forms.CharField(
+        label="Message",
+        required=False,
+        widget=forms.Textarea(attrs={"rows": 4, "cols": 50})  # Optional: Adjust size
+    )

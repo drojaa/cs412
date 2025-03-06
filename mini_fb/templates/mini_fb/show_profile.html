@@ -56,8 +56,22 @@ Description: template of form to show an indiv. profile for mini_fb
                         </p>
                         {% for img in message.get_images %}
                         <img src='{{ img.img_file.img_file.url}}' alt='{{ img.img_file.img_file.url }}' style="border-radius: 5px; width: 130px; height: 130px;">
+                        <!-- Link URl to this status message -->
+                        
                         {% endfor %}            
                         <br>
+                            <br>
+                       
+
+                           
+                            <div id="crud" style="margin-right: 3px;">
+                                <a href="{% url 'delete_status' message.pk%}" style="color:blue">Delete</a>
+                            </div>
+
+                            <div id="crud">
+                                <a href="{% url 'update_status' message.pk%}" style="color:blue">Update</a>
+                            </div>
+                        
                       
                     </div>
                    <br>

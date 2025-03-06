@@ -7,9 +7,9 @@ publish a status and create a new profile
 """
 
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
-from .models import Profile, Image, StatusImage
-from .forms import CreateProfileForm, CreateStatusMessageForm, UpdateProfileForm
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from .models import Profile, Image, StatusImage, StatusMessage
+from .forms import CreateProfileForm, CreateStatusMessageForm, UpdateProfileForm, UpdateStatusMessageForm
 from django.urls import reverse
 # Create your views here.
 import time
@@ -77,3 +77,30 @@ class UpdateProfileView(UpdateView):
         model = Profile
         form_class = UpdateProfileForm
         template_name = "mini_fb/update_profile_form.html"
+
+class DeleteStatusMessageView(DeleteView):
+    '''View class to handle updating a status message'''
+    model = StatusMessage
+    template_name = "mini_fb/delete_status_form.html"
+
+    def get_success_url(self):
+        '''Returns URL to redirect'''
+        pk = self.kwargs['pk']
+        statusmessage = StatusMessage.objects.get(pk=pk)
+        profile = statusmessage.profile
+        #call reverse function
+        return reverse('show_profile', kwargs={'pk': profile.pk})
+
+class UpdateStatusMessageView(UpdateView):
+    '''View class to handle updating a status message'''
+    model = StatusMessage
+    form_class = UpdateStatusMessageForm
+    template_name = "mini_fb/update_status_form.html"
+
+    def get_success_url(self):
+        '''Returns URL to redirect'''
+        pk = self.kwargs['pk']
+        statusmessage = StatusMessage.objects.get(pk=pk)
+        profile = statusmessage.profile
+        #call reverse function
+        return reverse('show_profile', kwargs={'pk': profile.pk})

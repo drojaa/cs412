@@ -1,0 +1,38 @@
+<!-- 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Date: 2025-02-27 
+Description: template of form to delete a status for mini_fb
+-->
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
+<header>
+    <h1 id="header-name">Mini Facebook</h1>
+</header>
+<h2 id="form-header-delete">Are you sure you want to delete this comment?</h2>
+<div id="delete-contain">
+    <p style="font-weight: bold; margin-bottom: 5px;">
+        {{statusmessage.timestamp}}
+    </p>
+    <p id="delete-msg">
+        {{statusmessage}}
+    </p>
+</div>
+
+<div id="crud-contain">
+
+
+<!-- Form to Delete -->
+ <form method="POST">
+    {%csrf_token%}
+        <input id="crud" type="submit" value="Delete"> 
+ </form>
+ <!-- Form to Cancel -->
+ <form action="{% url 'show_profile' statusmessage.profile.pk %}" method="GET">
+    {%csrf_token%}
+        <input id="crud" type="submit" value="Cancel"> 
+ </form>
+</div>
+ {% endblock %}
