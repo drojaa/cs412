@@ -8,7 +8,7 @@ publish a status and create a new profile
 
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView
-from .models import Profile
+from .models import Profile, Image, StatusImage
 from .forms import CreateProfileForm, CreateStatusMessageForm
 from django.urls import reverse
 # Create your views here.
@@ -61,6 +61,15 @@ class CreateStatusMessageView(CreateView):
         pk = self.kwargs['pk']
         profile = Profile.objects.get(pk = pk)
         form.instance.profile = profile 
+        sm = form.save()
+        files = self.request.FILES.getlist('files')
+        for file in files:
+            #each file in files holds the url each img
+            image = Image(profile=profile, img_file=file)
+            image.save()
+            status_image = StatusImage(img_file=image, stat_msg=sm)
+            status_image.save()
+
         #delegate the work to the superclass
         return super().form_valid(form)
     
