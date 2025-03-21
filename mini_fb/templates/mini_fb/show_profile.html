@@ -36,7 +36,14 @@ Description: template of form to show an indiv. profile for mini_fb
                         </h5>
                     </div>
                 </div>
-                <h2> {{profile.first_name}}'s Friends</h2>
+                <div id="header-sugg">
+                    <h2> {{profile.first_name}}'s Friends</h2>
+                    <a href="{% url 'friend_suggestions' profile.pk %}"> 
+                        <h4> Friend Suggestions </h4>
+                    </a>
+                   
+                </div>
+                
                 
                 <div id="friends">
                    {% for friend in profile.get_friends %}
@@ -48,7 +55,6 @@ Description: template of form to show an indiv. profile for mini_fb
                     <p class="friend_name"> {{ friend.first_name }}</p>
                     <p class="friend_name"> {{ friend.last_name }}</p>
                   </a>
-
                 </div>  
                    {% endfor %}
                 </div>      
