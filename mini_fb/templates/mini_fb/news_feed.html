@@ -1,0 +1,44 @@
+<!-- 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Date: 2025-03-21
+Description: template of news_feed a status for mini_fb
+-->
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+
+<header>
+    <h1 id="header-name">Mini Facebook</h1>
+</header>
+<h2 id="form-header-delete">News Feed</h2>
+<div id="news">
+   
+                <div id="status-container">
+                   
+                <br>
+                <a id="close" href="{% url 'show_profile' profile.pk  %}">
+                    Go back to Profile
+                 </a>
+                 <br>
+                 <br>
+                
+                {% for message in profile.get_news_feed %}
+                <div id="status">
+                    <img src="{{message.profile.image_file}}" style="width: 35px; height: 35px; border-radius: 100%;"/>
+                    <strong>by <span id="message-name">{{ message.profile.first_name }}</span> at {{ message.timestamp }}</strong>
+                    <p id="message">
+                        {{ message.message }}
+                    </p>
+                    {% for img in message.get_images %}
+                    <img src='{{ img.img_file.img_file.url}}' alt='{{ img.img_file.img_file.url }}' style="border-radius: 5px; width: 130px; height: 130px;">
+                    <!-- Link URl to this status message -->
+                    
+                    {% endfor %}     
+                    <br>
+                    <br>       
+                    {% endfor %} 
+                 
+                </div>
+
+ {% endblock %}

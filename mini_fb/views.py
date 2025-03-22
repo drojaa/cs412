@@ -6,9 +6,9 @@ Description: Functions to display singular Profiles, all Profiles, and forms to
 publish a status and create a new profile
 """
 
-from django.shortcuts import render
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import Profile, Image, StatusImage, StatusMessage
+from django.shortcuts import render, redirect
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, View
+from .models import Profile, Image, StatusImage, StatusMessage, Friend
 from .forms import CreateProfileForm, CreateStatusMessageForm, UpdateProfileForm, UpdateStatusMessageForm
 from django.urls import reverse
 # Create your views here.
@@ -104,3 +104,32 @@ class UpdateStatusMessageView(UpdateView):
         profile = statusmessage.profile
         #call reverse function
         return reverse('show_profile', kwargs={'pk': profile.pk})
+
+
+class AddFriendView(View):
+    '''View class to handle adding friends to a Profile'''
+    model = Friend
+    template_name = "mini_fb/show_profile.html"
+   
+    def dispatch(self, request, *args, **kwargs):
+       pk1 = self.kwargs['pk']
+       pk2 = self.kwargs['other_pk']
+
+       profile1 = Profile.objects.get(pk = pk1)
+       profile2 = Profile.objects.get(pk = pk2)
+
+       Profile.add_friend(profile1, profile2)
+
+       return redirect(reverse('show_profile', kwargs={'pk': pk1}))
+
+ 
+
+class ShowFriendSuggetionsView(DetailView):
+    '''View class to show friend suggestions'''
+    model = Profile
+    template_name = "mini_fb/friend_suggestions.html"
+
+class ShowNewsFeedView(DetailView):
+    '''View class to show news feed of profile instance and friends stats'''
+    model = Profile
+    template_name = "mini_fb/news_feed.html"

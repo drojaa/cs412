@@ -35,7 +35,87 @@ class Profile(models.Model):
     def get_absolute_url(self):
         '''Return a URL to display once instance of this object'''
         return reverse('show_profile', kwargs={'pk':self.pk})
+    def get_friends(self):
+        '''Return a List of given profile's friends'''
+        friend_list = []
+        friends = Friend.objects.filter(profile1=self) | Friend.objects.filter(profile2=self)
+        '''Checks if the friend isn't already inside the list'''
+        '''Checks if profile1 or profile2 isn't the self object'''
+        for friend in friends:
+            if friend.profile1 not in friend_list:
+                if self.first_name != friend.profile1.first_name:
+                    if self.last_name != friend.profile1.last_name:
+                         prof_friend = Profile.objects.get(first_name=friend.profile1.first_name, last_name=friend.profile1.last_name)
+                         friend_list.append(prof_friend)
+            if friend.profile2 not in friend_list:
+                if self.first_name != friend.profile2.first_name:
+                    if self.last_name != friend.profile2.last_name:
+                        prof_friend = Profile.objects.get(first_name=friend.profile2.first_name, last_name=friend.profile2.last_name) 
+                        friend_list.append(prof_friend)
+        return friend_list
+    
+    def add_friend(self, other):
+        '''Add Profile as a Friend'''
+        all_friends = Friend.objects.all()
+        for f in all_friends:
+            if self != other:
+                if not((f.profile1 == self or f.profile2 == self) and (f.profile1 == other or f.profile2 == other)):
+                    new_friends = Friend(profile1=self, profile2=other)
+                    new_friends.save()
+                else:
+                    print("Already are Friends!")
+                
 
+    
+    def get_friend_suggestions(self):
+        '''Get friend suggestion for an instance of a Profile'''
+        prof_friends = Profile.get_friends(self)
+        all_profiles = Profile.objects.all()
+        prof_list = []
+        for prof in all_profiles:
+            if prof not in prof_friends and prof != self:
+                print(prof)
+                prof_list.append(prof)
+
+        return prof_list 
+    
+    def get_news_feed(self):
+        news_feed_list = []
+        friends_list = []
+    
+    # Get the friends list, and add self to it as well
+        friends = Profile.get_friends(self)
+        for i in friends:
+            friends_list.append(i)
+        friends_list.append(self)
+
+    # Iterate through the friends list and then through each status message
+        for f in friends_list:
+            status_messages = StatusMessage.objects.filter(profile=f).order_by('-timestamp')
+            for status in status_messages:
+                news_feed_list.append(status)
+
+        news_feed_list.sort(key=lambda x: x.timestamp, reverse=True)
+        return news_feed_list
+
+    
+
+
+    
+     
+
+
+
+
+
+
+
+
+
+
+
+
+       
 class StatusMessage(models.Model): 
     '''Encapsulate the data of Facebook Status Message for each Profile'''
 
@@ -64,3 +144,12 @@ class StatusImage(models.Model):
     '''Encap Image for Status Message'''
     img_file = models.ForeignKey(Image, on_delete=models.CASCADE)
     stat_msg = models.ForeignKey(StatusMessage, on_delete=models.CASCADE)
+
+class Friend(models.Model):
+    '''Encaps the Friend relationship amongst Profiles'''
+    profile1 =  models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="profile1")
+    profile2 =  models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="profile2")
+    timestamp =  models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.profile1} and  {self.profile2}'
