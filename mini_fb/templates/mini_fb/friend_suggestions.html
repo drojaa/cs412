@@ -21,6 +21,10 @@ Description: template for friends suggestions for mini_fb
 </div>
 
     <div id="friends-sugg">
+        
+        <!-- Iterates through each friend profile
+         Given by the get_friend_suggestion method 
+         in the Profile model class -->
        
         {% for friend in profile.get_friend_suggestions %}
        

@@ -80,6 +80,8 @@ class Profile(models.Model):
         return prof_list 
     
     def get_news_feed(self):
+        '''Get the Status Messages of all the user's friends
+         Including the user's messages '''
         news_feed_list = []
         friends_list = []
     

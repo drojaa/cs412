@@ -22,7 +22,7 @@ Description: template of news_feed a status for mini_fb
                  </a>
                  <br>
                  <br>
-                
+                <!-- Iterates through the status messages given from method get_news_feed -->
                 {% for message in profile.get_news_feed %}
                 <div id="status">
                     <img src="{{message.profile.image_file}}" style="width: 35px; height: 35px; border-radius: 100%;"/>

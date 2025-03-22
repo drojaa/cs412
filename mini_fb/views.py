@@ -110,7 +110,8 @@ class AddFriendView(View):
     '''View class to handle adding friends to a Profile'''
     model = Friend
     template_name = "mini_fb/show_profile.html"
-   
+    # modified dispatch so the profile's pk
+    # are used in Profile's add_friend method
     def dispatch(self, request, *args, **kwargs):
        pk1 = self.kwargs['pk']
        pk2 = self.kwargs['other_pk']
