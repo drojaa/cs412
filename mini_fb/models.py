@@ -78,6 +78,34 @@ class Profile(models.Model):
                 prof_list.append(prof)
 
         return prof_list 
+    
+    def get_news_feed(self):
+        news_feed_list = []
+        friends_list = []
+    
+    # Get the friends list, and add self to it as well
+        friends = Profile.get_friends(self)
+        for i in friends:
+            friends_list.append(i)
+        friends_list.append(self)
+
+    # Iterate through the friends list and then through each status message
+        for f in friends_list:
+            status_messages = StatusMessage.objects.filter(profile=f).order_by('-timestamp')
+            for status in status_messages:
+                news_feed_list.append(status)
+
+        news_feed_list.sort(key=lambda x: x.timestamp, reverse=True)
+        return news_feed_list
+
+    
+
+
+    
+     
+
+
+
 
 
 

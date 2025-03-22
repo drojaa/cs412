@@ -128,3 +128,8 @@ class ShowFriendSuggetionsView(DetailView):
     '''View class to show friend suggestions'''
     model = Profile
     template_name = "mini_fb/friend_suggestions.html"
+
+class ShowNewsFeedView(DetailView):
+    '''View class to show news feed of profile instance and friends stats'''
+    model = Profile
+    template_name = "mini_fb/news_feed.html"
