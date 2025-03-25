@@ -11,6 +11,7 @@ from django.db import models
 
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 import time
 # Define data models for mini_fb
 # Create your models here.
@@ -19,6 +20,7 @@ class Profile(models.Model):
     '''Encapsulate the data of indivisual Facebook users'''
 
     # define the data attributes of the Profile object 
+    user = models.ForeignKey(User, on_delete=models.CASCADE) ## NEW
     first_name = models.TextField(blank=True)
     last_name = models.TextField(blank=True)
     city = models.TextField(blank=True)

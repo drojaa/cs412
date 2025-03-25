@@ -19,10 +19,22 @@ Description: base.html template for mini_fb
             <li><a id="base" href="{% url 'show_all_profiles' %}">All Profiles</a></li>
             <li><a id="base" href="{% url 'create_profile' %}">Create Profile</a></li>
             {% if profile %}
+            {% if request.user.is_authenticated %}
             <!-- If we're on a profile page, show the News Feed link -->
             <li><a id="base" href="{% url 'news_feed' profile.pk %}">News Feed</a></li>
-        {% endif %}
+            {% endif %}
+            {% endif %}
+            <li><a id="base" href="{% url 'login' %}">Login</a></li>
+            <li><a id="base" href="{% url 'logout' %}">Logout</a></li>
+            <div id="base">
+                {% if request.user.is_authenticated %}
+                Logged in user: {{ request.user }}.
+                {% else %}
+                Not logged in.
+                {% endif %}
+                </div>
         </ul>
+       
     </nav>
     <main>
     {% block content %}

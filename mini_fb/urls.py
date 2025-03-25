@@ -9,7 +9,7 @@ Description: Urls for mini_fb project
 from django.urls import path
 from django.conf import settings
 from .views import *
-
+from django.contrib.auth import views as auth_views
 urlpatterns = [
    path('', ShowAllProfilesView.as_view(), name="show_all_profiles"), 
    path('profile/create', CreateProfileView.as_view(), name="create_profile"),
@@ -21,4 +21,8 @@ urlpatterns = [
    path('profile/<int:pk>/add_friend/<int:other_pk>', AddFriendView.as_view(), name="add_friend"),
    path('profile/<int:pk>/friend_suggestions', ShowFriendSuggetionsView.as_view(), name="friend_suggestions"),
    path('profile/<int:pk>/news_feed', ShowNewsFeedView.as_view(), name="news_feed"),
+
+   #auth-urls
+   path('login/', auth_views.LoginView.as_view(template_name="mini_fb/login.html"), name="login"),
+   path('logout/', auth_views.LogoutView.as_view(template_name="mini_fb/logout.html"), name="logout")
 ]
