@@ -24,8 +24,20 @@ Description: base.html template for mini_fb
             <li><a id="base" href="{% url 'news_feed' profile.pk %}">News Feed</a></li>
             {% endif %}
             {% endif %}
+
+         
+             {% if request.user.is_authenticated %}
+            <li>
+                <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <!-- To save the CSS styling -->
+                    <a id="base" href="#" onclick="this.closest('form').submit(); return false;">Logout</a>
+                </form>
+            </li>
+            {% else %}
             <li><a id="base" href="{% url 'login' %}">Login</a></li>
-            <li><a id="base" href="{% url 'logout' %}">Logout</a></li>
+            {% endif %}
+            
             <div id="base">
                 {% if request.user.is_authenticated %}
                 Logged in user: {{ request.user }}.

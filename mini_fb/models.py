@@ -56,6 +56,7 @@ class Profile(models.Model):
                         friend_list.append(prof_friend)
         return friend_list
     
+    
     def add_friend(self, other):
         '''Add Profile as a Friend'''
         all_friends = Friend.objects.all()
@@ -102,10 +103,21 @@ class Profile(models.Model):
         news_feed_list.sort(key=lambda x: x.timestamp, reverse=True)
         return news_feed_list
 
-    
+    def get_login_url(): 
+        '''return the URL for this app's login page'''
+        return reverse('login')
 
 
-    
+    def get_object(self):
+        '''return the profile corresponding to the User'''
+        user = self.request.user
+        all_profiles = Profile.objects.all()
+        for prof in all_profiles:
+            if prof.user == user:
+                return prof 
+        
+        
+
      
 
 
