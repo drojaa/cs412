@@ -19,9 +19,9 @@ Description: base.html template for mini_fb
             <li><a id="base" href="{% url 'show_all_profiles' %}">All Profiles</a></li>
             <li><a id="base" href="{% url 'create_profile' %}">Create Profile</a></li>
             {% if profile %}
-            {% if request.user.is_authenticated %}
+            {% if request.user.is_authenticated and request.user == profile.user %}
             <!-- If we're on a profile page, show the News Feed link -->
-            <li><a id="base" href="{% url 'news_feed' profile.pk %}">News Feed</a></li>
+            <li><a id="base" href="{% url 'news_feed'  %}">News Feed</a></li>
             {% endif %}
             {% endif %}
 
