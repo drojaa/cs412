@@ -11,6 +11,7 @@ from django.db import models
 
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 import time
 # Define data models for mini_fb
 # Create your models here.
@@ -19,6 +20,7 @@ class Profile(models.Model):
     '''Encapsulate the data of indivisual Facebook users'''
 
     # define the data attributes of the Profile object 
+    user = models.ForeignKey(User, on_delete=models.CASCADE) ## NEW
     first_name = models.TextField(blank=True)
     last_name = models.TextField(blank=True)
     city = models.TextField(blank=True)
@@ -53,6 +55,7 @@ class Profile(models.Model):
                         prof_friend = Profile.objects.get(first_name=friend.profile2.first_name, last_name=friend.profile2.last_name) 
                         friend_list.append(prof_friend)
         return friend_list
+    
     
     def add_friend(self, other):
         '''Add Profile as a Friend'''
@@ -100,10 +103,21 @@ class Profile(models.Model):
         news_feed_list.sort(key=lambda x: x.timestamp, reverse=True)
         return news_feed_list
 
-    
+    def get_login_url(): 
+        '''return the URL for this app's login page'''
+        return reverse('login')
 
 
-    
+    def get_object(self):
+        '''return the profile corresponding to the User'''
+        user = self.request.user
+        all_profiles = Profile.objects.all()
+        for prof in all_profiles:
+            if prof.user == user:
+                return prof 
+        
+        
+
      
 
 

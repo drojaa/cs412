@@ -1,0 +1,25 @@
+<!-- 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Date: 2025-03-25
+Description: login template for mini_fb
+-->
+{% extends 'mini_fb/base.html' %}
+
+{% block content %}
+<header>
+    <h1 id="header-name">Mini Facebook</h1>
+</header>
+   <h2 id="login-header">Login to your Mini Facebook account</h2>
+   <form action="{% url 'login' %}" method="POST">
+   {% csrf_token %}
+   <table id="form">
+    {{form.as_table}} <!--Obtains form from form.py thats associated to this html file-->
+    </table>
+    <div id="submit-button">
+    <input id="submit" type="submit" value="Login">
+    <input id="submit" type="hidden" name="next" value="{% url 'show_all_profiles' %}">
+    </div>
+   </form>
+
+{% endblock %}

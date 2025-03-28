@@ -22,17 +22,15 @@ Description: template of form to delete a status for mini_fb
 </div>
 
 <div id="crud-contain">
-
-
-<!-- Form to Delete -->
- <form method="POST">
-    {%csrf_token%}
+    <!-- Form to Delete -->
+    <form method="POST">
+        {% csrf_token %}
         <input id="crud" type="submit" value="Delete"> 
- </form>
- <!-- Form to Cancel -->
- <form action="{% url 'show_profile' statusmessage.profile.pk %}" method="GET">
-    {%csrf_token%}
+    </form>
+    <!-- Form to Cancel -->
+    <form action="{% url 'show_profile' statusmessage.profile.pk %}" method="GET">
+        {% csrf_token %}
         <input id="crud" type="submit" value="Cancel"> 
- </form>
+    </form>
 </div>
- {% endblock %}
+{% endblock %}

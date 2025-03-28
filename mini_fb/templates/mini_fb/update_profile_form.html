@@ -12,7 +12,7 @@ Description: template of form to update a profile for mini_fb
     <h1 id="header-name">Mini Facebook</h1>
 </header>
 <h1 id="form-header">Update Profile</h1>
-<form action="{% url 'update_profile' profile.pk %}" method="POST">
+<form action="{% url 'update_profile'  %}" method="POST">
     {% csrf_token %}
 <table id="form">
     {{form.as_table}} <!--Obtains form from form.py thats associated to this html file-->

@@ -15,7 +15,15 @@ Description: template of form to create a profile for mini_fb
 <form action="{% url 'create_profile'%}" method="POST">
     {% csrf_token %}
 <table id="form">
-    {{form.as_table}} <!--Obtains form from form.py thats associated to this html file-->
+    <!-- User creation form fields with no help text -->
+    {% for field in user_creation_form %}
+    <tr>
+        <th>{{ field.label_tag }}</th>
+        <td>{{ field }}</td>
+    </tr>
+    {% endfor %}
+    <!-- Profile creation form fields -->
+    {{ form.as_table }}
 </table>
 <div id="submit-button">
 <input id="submit" type="submit" name="submit" value="Submit">
