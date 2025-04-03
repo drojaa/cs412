@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    margin: 0% 3% 0% 3%; 
+    background-image: linear-gradient(to bottom, #070403, #241a16, #3f2a22, #5b3c2f, #794e3d, #805840, #856244, #8a6d49, #786f4c, #696f53, #5f6d5b, #5b6a61);
+}
+main {
+    height: 100vh;
+    overflow-y: auto;
+   
+}
+
+
+
+nav {
+    margin-top: 15px;
+    list-style: none;
+    display: flex; 
+    justify-content: flex-start;
+    align-items: center;
+}
+
+nav h2 {
+    margin: 0;
+    padding: 0;
+    color: rgb(178, 153, 121);
+    font-weight: 400;  /* Increased to 700 for more boldness */
+    font-family: 'DM Sans', sans-serif;
+}
+
+li {
+    padding-right: 18px;
+    flex-direction: row;
+    list-style: none;
+    font-family: 'DM Sans', sans-serif;
+}
+
+h1 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+   
+
+    color: rgb(178, 153, 121); 
+    font-family: 'DM Sans', sans-serif;font-weight: lighter;
+}
+
+#base {
+    text-decoration: none;
+    color: rgb(178, 153, 121); 
+    font-weight: lighter;
+    font-family: 'DM Sans', sans-serif;font-size: small;
+ }
+
+footer {
+    text-align: center;
+ 
+    color: rgb(157, 134, 105); 
+    font-family: 'DM Sans', sans-serif;
+    font-weight: lighter;
+  
+}
+
+a {
+    color: rgb(178, 153, 121); 
+    text-decoration: underline;
+}

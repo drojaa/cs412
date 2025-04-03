@@ -1,0 +1,32 @@
+<!-- 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Date: 2025-02-4 
+Description: base html template for voter analytics
+-->
+
+<!-- base template for voter_analytics page -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voter Analytics</title>
+    <link rel="stylesheet" href="{% static 'voters.css' %}">
+</head>
+<body>
+    <nav>
+        <li><h2>Voter Analytics</h2></li>
+        <li style="margin-left: auto;"><a id="base" href="{% url 'home' %}">Show Voters' List</a></li>
+        <li><a id="base" href="{% url 'home' %}">Show Voters' Graph</a></li>
+    </nav>
+    <main>
+    {% block content %}
+    {% endblock %}
+    </main>
+</body>
+<footer>
+    <p>Web Application created by Derinell Rojas</p>
+    <p>Page Generated at: {{time}}</p>
+    <p>If you'd like, you can connect with me on <a href="https://www.linkedin.com/in/derinellrojas/">LinkedIn</a></p>
+</footer>
+</html>
