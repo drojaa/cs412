@@ -1,0 +1,96 @@
+
+<h2>Filter Voters</h2>
+<div id="search-container">
+    <form>
+        <table id="search-table">
+            <tr>
+                <th>Party Affiliation:</th>
+                <td><select type="text" id="search-input" name="party" placeholder="Select party">
+                    <option value="U">U</option>
+                    <option value="D">D</option>
+                    <option value="R">R</option>
+                    <option value="I">A</option>
+                    <option value="L">J</option>
+                    <option value="G">CC</option>
+                    <option value="N">X</option>
+                    <option value="O">L</option>
+                    <option value="P">Q</option>
+                    <option value="S">S</option>
+                    <option value="T">FF</option>
+                    <option value="W">GG</option>
+                    <option value="W">AA</option>
+                    <option value="W">Z</option>
+                    <option value="W">O</option>
+                    <option value="W">P</option>
+                    <option value="W">E</option>
+                    <option value="W">V</option>
+                    <option value="W">H</option>
+                    <option value="W">Y</option>
+                    <option value="W">W</option>
+                    <option value="W">EE</option>
+                    <option value="W">K</option>
+                    <option value="W">T</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Min Date of Birth:</th>
+                <td>
+                    <select id="search-input" name="min_year">
+                        <option value="">Select Year</option>
+                        {% for year in ""|ljust:"85" %}
+                            <option value="{{ forloop.counter|add:1919 }}">{{ forloop.counter|add:1919 }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Max Date of Birth:</th>
+                <td>
+                    <select id="search-input" name="max_year">
+                        <option value="">Select Year</option>
+                        {% for year in ""|ljust:"85" %}
+                            <option value="{{ forloop.counter|add:1919 }}">{{ forloop.counter|add:1919 }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Voter Score:</th>
+                <td><select id="search-input" name="voter_score">
+                    <option value="">Select Score</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>V20state</th>
+                <td><input type="checkbox" id="search-input" name="v20state"></td>
+            </tr>
+            <tr>
+                <th>v21town</th>
+                <td><input type="checkbox" id="search-input" name="v21town"></td>
+            </tr>
+            <tr>
+                <th>v21primary</th>
+                <td><input type="checkbox" id="search-input" name="v21primary"></td>
+            </tr>
+            <tr>
+                <th>v23town</th>
+                <td><input type="checkbox" id="search-input" name="v23town"></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" id="search-button" value="Search">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+
