@@ -1,0 +1,26 @@
+<!-- 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Date: 2025-04-4 
+Description: graph html template for voter analytics
+-->
+
+{% extends 'voter_analytics/base.html' %}
+{% load static %}
+
+{% block content %}
+<h1>Voter Analytics Graphs</h1>
+
+<div class="main-container">
+    <div class="content-container">
+        <div class="search-section">
+            {% include 'voter_analytics/search.html' %}
+        </div>
+        <div class="results-section">
+            <div class="container">
+                {{ graph_div|safe }}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

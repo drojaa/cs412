@@ -7,4 +7,5 @@ urlpatterns = [
     path('', views.VoterListView.as_view(), name="voters"),
     path('voters', views.VoterListView.as_view(), name="voter"),
     path('voter/<int:pk>', views.SingleVoterView.as_view(), name="voter"),
+    path('graphs', views.GraphListView.as_view(), name="graphs"),
 ]
