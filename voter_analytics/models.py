@@ -40,7 +40,7 @@ class Voter(models.Model):
     def load_data():
         '''Function to load data from CSV file into the Django database'''
         Voter.objects.all().delete()
-        filename = '/static/newton_voters.csv'
+        filename = '/Users/derinellrojas/Desktop/django/static/newton_voters.csv'
         f = open(filename, 'r') #open the file for reading 
 
         # discard headers:
