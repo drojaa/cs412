@@ -1,15 +1,38 @@
 
 <h2>Filter Voters</h2>
 <div id="search-container">
-    <form action="{% url 'voters' %}" method="GET">
+    <form action="{{ request.path }}" method="GET">
         <table id="search-table">
             <tr>
                 <th>Party Affiliation:</th>
                 <td><select id="search-input" name="party">
                     <option value="">All Parties</option>
-                    <option value="R" {% if request.GET.party == "R" %}selected{% endif %}>Republican (R)</option>
-                    <option value="D" {% if request.GET.party == "D" %}selected{% endif %}>Democrat (D)</option>
-                    <option value="U" {% if request.GET.party == "U" %}selected{% endif %}>Unenrolled (U)</option>
+                    <option value="U" {% if request.GET.party == "U" %}selected{% endif %}>U</option>
+                    <option value="D" {% if request.GET.party == "D" %}selected{% endif %}>D</option>
+                    <option value="R" {% if request.GET.party == "R" %}selected{% endif %}>R</option>
+                    <option value="CC" {% if request.GET.party == "CC" %}selected{% endif %}>CC</option>
+                    <option value="L" {% if request.GET.party == "L" %}selected{% endif %}>L</option>
+                    <option value="J" {% if request.GET.party == "J" %}selected{% endif %}>J</option>
+                    <option value="T" {% if request.GET.party == "T" %}selected{% endif %}>T</option>
+                    <option value="O" {% if request.GET.party == "O" %}selected{% endif %}>O</option>
+                    <option value="A" {% if request.GET.party == "A" %}selected{% endif %}>A</option>
+                    <option value="Q" {% if request.GET.party == "Q" %}selected{% endif %}>Q</option>
+                    <option value="S" {% if request.GET.party == "S" %}selected{% endif %}>S</option>
+                    <option value="G" {% if request.GET.party == "G" %}selected{% endif %}>G</option>
+                    <option value="X" {% if request.GET.party == "X" %}selected{% endif %}>X</option>
+                    <option value="AA" {% if request.GET.party == "AA" %}selected{% endif %}>AA</option>
+                    <option value="Z" {% if request.GET.party == "Z" %}selected{% endif %}>Z</option>
+                    <option value="FF" {% if request.GET.party == "FF" %}selected{% endif %}>FF</option>
+                    <option value="GG" {% if request.GET.party == "GG" %}selected{% endif %}>GG</option>
+                    <option value="V" {% if request.GET.party == "V" %}selected{% endif %}>V</option>
+                    <option value="K" {% if request.GET.party == "K" %}selected{% endif %}>K</option>
+                    <option value="HH" {% if request.GET.party == "HH" %}selected{% endif %}>HH</option>
+                    <option value="P" {% if request.GET.party == "P" %}selected{% endif %}>P</option>
+                    <option value="E" {% if request.GET.party == "E" %}selected{% endif %}>E</option>
+                    <option value="H" {% if request.GET.party == "H" %}selected{% endif %}>H</option>
+                    <option value="Y" {% if request.GET.party == "Y" %}selected{% endif %}>Y</option>
+                    <option value="W" {% if request.GET.party == "W" %}selected{% endif %}>W</option>
+                    <option value="EE" {% if request.GET.party == "EE" %}selected{% endif %}>EE</option>
                 </select></td>
             </tr>
             <tr>
@@ -63,7 +86,7 @@
             <tr>
                 <td colspan="2">
                     <input type="submit" id="search-button" value="Search">
-                    <a href="{% url 'voters' %}" class="reset-button">Reset Filters</a>
+                    <a href="{{ request.path }}" class="reset-button">Reset Filters</a>
                 </td>
             </tr>
         </table>

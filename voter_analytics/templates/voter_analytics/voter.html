@@ -12,75 +12,67 @@ Description: voter html template for voter analytics
 <h1>Voter Information</h1>
 
 <div class="main-container">
-    <!-- Content container for search and results -->
     <div class="content-container">
-        <!-- Search section on the left -->
-        <div class="search-section">
-            {% include "voter_analytics/search.html" %}    
-        </div>
+        <!-- Removed search-section div and include -->
+        <div class="container">
+            <table>
+                <tr>
+                    <th colspan="2">Personal Information</th>
+                </tr>
+                <tr>
+                    <td>Name:</td>
+                    <td>{{voter.first_name}} {{voter.last_name}}</td>
+                </tr>
+                <tr>
+                    <td>Address:</td>
+                    <td>
+                        {{voter.street_number}} {{voter.street_name}}{% if voter.apartment_number %}, APT {{voter.apartment_number}}{% endif %}
+                        <br>
+                        <a href="https://www.google.com/maps/search/?api=1&query={{voter.street_number}}+{{voter.street_name}}+Newton+MA" 
+                           target="_blank" 
+                           class="map-link">
+                            <img src="{% static 'address-location.png' %}" alt="Map Icon" class="map-icon">
+                            View on Google Maps
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Date of Birth:</td>
+                    <td>{{voter.date_of_birth}}</td>
+                </tr>
+                <tr>
+                    <td>Party Affiliation:</td>
+                    <td>{{voter.party_affiliation}}</td>
+                </tr>
+                <tr>
+                    <td>Voter Score:</td>
+                    <td>{{voter.voter_score}}</td>
+                </tr>
 
-        <!-- Results section on the right -->
-        <div class="results-section">
-            <div class="container">
-                <table>
-                    <tr>
-                        <th colspan="2">Personal Information</th>
-                    </tr>
-                    <tr>
-                        <td>Name:</td>
-                        <td>{{voter.first_name}} {{voter.last_name}}</td>
-                    </tr>
-                    <tr>
-                        <td>Address:</td>
-                        <td>
-                            {{voter.street_number}} {{voter.street_name}}{% if voter.apartment_number %}, APT {{voter.apartment_number}}{% endif %}
-                            <br>
-                            <a href="https://www.google.com/maps/search/?api=1&query={{voter.street_number}}+{{voter.street_name}}+Newton+MA" 
-                               target="_blank" 
-                               class="map-link">
-                                <img src="{% static 'address-location.png' %}" alt="Map Icon" class="map-icon">
-                                View on Google Maps
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Date of Birth:</td>
-                        <td>{{voter.date_of_birth}}</td>
-                    </tr>
-                    <tr>
-                        <td>Party Affiliation:</td>
-                        <td>{{voter.party_affiliation}}</td>
-                    </tr>
-                    <tr>
-                        <td>Voter Score:</td>
-                        <td>{{voter.voter_score}}</td>
-                    </tr>
-
-                    <tr>
-                        <th colspan="2">Voting History</th>
-                    </tr>
-                    <tr>
-                        <td>2020 State Election:</td>
-                        <td>{% if voter.v20state == 'TRUE' %}Yes{% else %}No{% endif %}</td>
-                    </tr>
-                    <tr>
-                        <td>2021 Town Election:</td>
-                        <td>{% if voter.v21town == 'TRUE' %}Yes{% else %}No{% endif %}</td>
-                    </tr>
-                    <tr>
-                        <td>2021 Primary Election:</td>
-                        <td>{% if voter.v21primary == 'TRUE' %}Yes{% else %}No{% endif %}</td>
-                    </tr>
-                    <tr>
-                        <td>2022 General Election:</td>
-                        <td>{% if voter.v22general == 'TRUE' %}Yes{% else %}No{% endif %}</td>
-                    </tr>
-                    <tr>
-                        <td>2023 Town Election:</td>
-                        <td>{% if voter.v23town == 'TRUE' %}Yes{% else %}No{% endif %}</td>
-                    </tr>
-                </table>
-            </div>
+                <tr>
+                    <th colspan="2">Voting History</th>
+                </tr>
+                <tr>
+                    <td>2020 State Election:</td>
+                    <td>{% if voter.v20state == 'TRUE' %}Yes{% else %}No{% endif %}</td>
+                </tr>
+                <tr>
+                    <td>2021 Town Election:</td>
+                    <td>{% if voter.v21town == 'TRUE' %}Yes{% else %}No{% endif %}</td>
+                </tr>
+                <tr>
+                    <td>2021 Primary Election:</td>
+                    <td>{% if voter.v21primary == 'TRUE' %}Yes{% else %}No{% endif %}</td>
+                </tr>
+                <tr>
+                    <td>2022 General Election:</td>
+                    <td>{% if voter.v22general == 'TRUE' %}Yes{% else %}No{% endif %}</td>
+                </tr>
+                <tr>
+                    <td>2023 Town Election:</td>
+                    <td>{% if voter.v23town == 'TRUE' %}Yes{% else %}No{% endif %}</td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
