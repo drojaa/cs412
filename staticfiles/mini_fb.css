@@ -186,7 +186,7 @@ strong {
 }
 
 #form-header {
-   
+
     text-align: center;
     color: rgb(5, 5, 181);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif ;
@@ -361,6 +361,7 @@ h2 {
 }
 
 #friend-sugg{
+    
     background-color: rgba(255, 255, 255, 0.5);
     border:  rgba(255, 255, 255, 0.5) 5px solid;
     display: flex;
@@ -371,6 +372,7 @@ h2 {
 }
 
 #friends-sugg{
+        
         background-color: rgb(167, 199, 226);
         padding: 20px;
         border: 5px solid rgb(12, 12, 176);
@@ -381,6 +383,8 @@ h2 {
         border-radius: 15px;
         max-width: max-content;   
         margin: auto;
+        
+        margin-top: 50px;
 }
 
 #add-friend{
@@ -426,10 +430,41 @@ h4 {
     margin: auto;
     color: navy;
     font-weight: bold;
+    
 }
 
 
 #news {
     background-color: #92b9ec;
 }   
+
+#login-header{
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #2912c2;
+    
+}
+
+#logged {
+   
+    border: solid 3px;
+    display: block;
+}
+
+#logout {
+    background-color:#1877F2 ;
+    color:white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: lighter;
+}
+
+#logout-confirm {
+    border: 5px solid rgb(5, 5, 181);
+    max-width: max-content;
+    margin: auto;
+    margin-top: 20%;
+    padding: 50px;
+    color: rgb(3, 3, 242);
+    background-color: rgb(100, 164, 243);
+    border-radius: 10px;
+}
 
