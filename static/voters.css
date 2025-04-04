@@ -23,15 +23,15 @@ body {
 }
 
 .search-section {
-    flex: 0 0 300px; /* Fixed width for search section */
+    flex: 0 0 300px; 
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
     padding: 20px;
-    margin-top: 45px; /* Offset to align with table, accounting for pagination height */
+    margin-top: 45px; 
 }
 
 .results-section {
-    flex: 1; /* Takes remaining space */
+    flex: 1;
 }
 
 nav {
@@ -46,7 +46,7 @@ nav h2 {
     margin: 0;
     padding: 0;
     color: rgb(117, 88, 93);
-    font-weight: 400;  /* Increased to 700 for more boldness */
+    font-weight: 400;  
     font-family: 'DM Sans', sans-serif;
 }
 
@@ -106,7 +106,7 @@ a:hover {
     border-radius: 8px;
     padding: 20px;
     width: 100%;
-    overflow-x: auto;  /* Add horizontal scroll if needed */
+    overflow-x: auto;  
 }
 
 table {
@@ -114,17 +114,17 @@ table {
     width: 50%;
     font-family: 'DM Sans', sans-serif;
     color: rgb(117, 88, 93);
-    border-collapse: separate;  /* Changed from collapse to separate */
-    border-spacing: 0 8px;     /* Vertical spacing between rows */
+    border-collapse: separate;  
+    border-spacing: 0 8px;     
 }
 
 td, th {
     text-align: center;
-    padding: 12px 20px;        /* Increased padding */
+    padding: 12px 20px;        
     position: relative;
 }
 
-/* Add subtle separators between columns */
+
 td:not(:last-child)::after {
     content: '';
     position: absolute;
@@ -135,7 +135,7 @@ td:not(:last-child)::after {
     background-color: rgba(255, 192, 203, 0.4);
 }
 
-/* Optional: Add hover effect on rows */
+
 tr:hover td {
     background-color: rgba(255, 255, 255, 0.1);
     transition: background-color 0.3s ease;
@@ -156,7 +156,7 @@ tr:hover td {
 
 .pagination li {
     list-style: none;
-    padding-right: 0;  /* Override the default li padding */
+    padding-right: 0;  
 }
 
 .pagination span {
@@ -182,8 +182,8 @@ input[type="text"]::placeholder {
 /* Update the search button styling */
 #search-button {
     padding: 8px 20px;
-    background: rgba(255, 192, 203, 0.8); /* Light pink with some transparency */
-    color: rgb(117, 88, 93); /* Matching the existing text color */
+    background: rgba(255, 192, 203, 0.8); 
+    color: rgb(117, 88, 93); 
     border: 1px solid rgba(255, 192, 203, 0.6);
     border-radius: 4px;
     cursor: pointer;
@@ -196,7 +196,7 @@ input[type="text"]::placeholder {
 }
 
 #search-button:hover {
-    background: rgba(255, 192, 203, 1); /* Solid pink on hover */
+    background: rgba(255, 192, 203, 1); 
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transform: translateY(-1px);
 }
@@ -297,7 +297,7 @@ input[type="checkbox"]:focus {
     vertical-align: middle;
 }
 
-/* Container for form elements */
+
 #search-container {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 8px;
@@ -305,12 +305,12 @@ input[type="checkbox"]:focus {
     box-shadow: 0 0 8px 4px rgba(255, 192, 203, 0.2);
 }
 
-/* Form row spacing */
+
 #search-table tr {
     margin-bottom: 8px;
 }
 
-/* Ensure consistent width for form elements */
+
 #search-table select,
 #search-table input[type="checkbox"] {
     width: 200px;
