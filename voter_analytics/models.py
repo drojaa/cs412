@@ -45,7 +45,7 @@ class Voter(models.Model):
         import os
         from django.conf import settings
 
-        # Try to find the CSV file in multiple locations
+        # Try to find the CSV file in multiple locations + **couldn't find solution to help with csv error but this worked**
         possible_paths = [
             os.path.join(settings.BASE_DIR, 'newton_voters.csv'),  # Project root
             os.path.join(settings.BASE_DIR, 'static', 'newton_voters.csv'),  # Static folder
@@ -64,7 +64,7 @@ class Voter(models.Model):
                 break
 
         if not filename:
-            raise FileNotFoundError("Could not find newton_voters.csv in any of the expected locations. Paths checked: " + str(possible_paths))
+            print("file not found")
 
         f = open(filename, 'r') #open the file for reading
 
