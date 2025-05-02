@@ -1,0 +1,79 @@
+<!-- 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Date: 2025-05-01
+Description: template to show all outfits for closet project
+-->
+{% extends 'project/base.html' %}
+
+{% block content %}
+<header>
+    <h1 id="header-name">My Outfits</h1>
+</header>
+
+<!-- Add Outfit button -->
+<div class="add-item-container">
+    <a href="{% url 'create_outfit' %}" class="add-item-button">
+        <span class="plus-icon">+</span>
+        <span class="button-text">Create Outfit</span>
+    </a>
+</div>
+
+<!-- Filter dropdown with server-side filtering -->
+<div class="filter-container">
+    <form method="get" action="{% url 'show_all_outfits' %}">
+        <label for="filter">Filter by:</label>
+        <select id="filter" name="filter">
+            <option value="all" {% if request.GET.filter == 'all' or not request.GET.filter %}selected{% endif %}>All Outfits</option>
+            <option value="recent" {% if request.GET.filter == 'recent' %}selected{% endif %}>Recently Created</option>
+            <option value="oldest" {% if request.GET.filter == 'oldest' %}selected{% endif %}>Oldest First</option>
+        </select>
+        <button type="submit" class="filter-button">Apply Filter</button>
+    </form>
+</div>
+
+<div class="outfit-container" id="outfit-container">
+    {% for item in outfit %}
+        <a href="{% url 'outfit_detail' item.id %}" class="outfit-card-link">
+            <div class="outfit-card" data-id="{{ item.id }}">
+                <!-- Outfit Name in top-left corner -->
+                <div class="outfit-header">
+                    <h3 class="outfit-name">{{ item.name }}</h3>
+                    <span class="outfit-date">{{ item.date_created|date:"M d, Y" }}</span>
+                </div>
+                
+                <!-- Outfit Items (first 3) -->
+                <div class="outfit-items">
+                    {% for outfit_item in item.outfit_items.all|slice:":3" %}
+                        {% if outfit_item.clothing_item.image %}
+                            <img src="{{ outfit_item.clothing_item.image.url }}" alt="{{ outfit_item.clothing_item.name }}" class="outfit-item-image">
+                        {% else %}
+                            <div class="no-image-small">No Image</div>
+                        {% endif %}
+                    {% empty %}
+                        <div class="no-items">No items in this outfit</div>
+                    {% endfor %}
+                    
+                    {% if item.outfit_items.count > 3 %}
+                        <div class="more-items">+{{ item.outfit_items.count|add:"-3" }} more</div>
+                    {% endif %}
+                </div>
+                
+                <div class="outfit-view">
+                    <span>View details →</span>
+                </div>
+            </div>
+        </a>
+    {% empty %}
+        <div class="empty-closet">
+            <p>You haven't created any outfits yet. Create your first outfit to get started!</p>
+            <a href="{% url 'create_outfit' %}" class="add-item-button">
+                <span class="plus-icon">+</span>
+                <span class="button-text">Create Outfit</span>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

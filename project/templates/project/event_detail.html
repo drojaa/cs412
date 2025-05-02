@@ -1,0 +1,63 @@
+<!-- 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Description: Template to display details of a single event
+-->
+{% extends 'project/base.html' %}
+
+{% block content %}
+<header>
+    <h1 id="header-name">Closet Manager</h1>
+</header>
+
+<div class="form-container">
+    <div class="detail-header">
+        <h2>{{ event.name }}</h2>
+        <p class="event-date-display"><strong>Date:</strong> {{ event.event_date|date:"F d, Y" }}</p>
+        <p class="event-location-display"><strong>Location:</strong> {{ event.location }}</p>
+    </div>
+
+    <div class="detail-actions">
+        <a href="{% url 'show_all_events' %}" class="back-button" id="cancel">← Back to Events</a>
+        <div class="action-buttons">
+            <a href="{% url 'update_event' event.id %}" class="edit-button" id="crud">Edit Event</a>
+            <a href="{% url 'delete_event' event.id %}" class="delete-button" id="crud">Delete Event</a>
+        </div>
+    </div>
+
+    <div class="event-detail-container">
+        <h3>Planned Outfit</h3>
+        {% if event.outfit %}
+            <div class="event-outfit-detail">
+                <div class="outfit-header">
+                    <h4>{{ event.outfit.name }}</h4>
+                    <a href="{% url 'outfit_detail' event.outfit.id %}" class="view-outfit-button" id="crud">View Outfit Details</a>
+                </div>
+                
+                <div class="clothing-items-grid">
+                    {% for outfit_item in event.outfit.outfit_items.all %}
+                        <div class="outfit-detail-item">
+                            {% if outfit_item.clothing_item.image %}
+                                <img src="{{ outfit_item.clothing_item.image.url }}" alt="{{ outfit_item.clothing_item.name }}" class="clothing-thumbnail">
+                            {% else %}
+                                <div class="no-image-small">No Image</div>
+                            {% endif %}
+                            <div class="item-details">
+                                <p class="item-name">{{ outfit_item.clothing_item.name }}</p>
+                                <p class="item-category">{{ outfit_item.clothing_item.get_type_display }}</p>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p class="no-items-message">This outfit has no items</p>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <div class="no-outfit-assigned">
+                <p>No outfit assigned to this event</p>
+                <a href="{% url 'update_event' event.id %}" class="assign-outfit-button" id="crud">Assign an Outfit</a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

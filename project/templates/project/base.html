@@ -1,0 +1,34 @@
+<!-- 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Date: 2025-05-01
+Description: base.html template for clothing project
+-->
+
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Closet Manager</title>
+    <link rel="stylesheet" href="{% static 'project.css' %}">
+</head>
+
+<body>
+    <nav>
+        <ul>
+            <li><a id="base" href="{% url 'show_all_clothing_items' %}">My Closet</a></li>
+            <li><a id="base" href="{% url 'show_all_outfits' %}">My Outfits</a></li>
+            <li><a id="base" href="{% url 'show_all_events' %}">Events</a></li>
+        </ul>
+    </nav>
+    <main>
+    {% block content %}
+    {% endblock %}
+    </main>
+</body>
+<footer>
+    <p>Web Application created by Derinell Rojas</p>
+    <p>If you'd like, you can connect with me on <a href="https://www.linkedin.com/in/derinellrojas/">LinkedIn</a></p>
+</footer>
+</html>

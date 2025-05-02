@@ -1,0 +1,51 @@
+<!-- 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Date: 2025-05-01
+Description: template to update an event for closet project
+-->
+{% extends 'project/base.html' %}
+
+{% block content %}
+
+<header>
+    <h1 id="header-name">Event Planner</h1>
+</header>
+
+<div class="form-container">
+    <h1 id="form-header">Update Event</h1>
+    
+    <form action="{% url 'update_event' event.id %}" method="POST">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+            {{ form.name }}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.event_date.id_for_label }}">{{ form.event_date.label }}</label>
+            {{ form.event_date }}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.location.id_for_label }}">{{ form.location.label }}</label>
+            {{ form.location }}
+        </div>
+        
+        <div class="form-group">
+            <label for="{{ form.outfit.id_for_label }}">{{ form.outfit.label }}</label>
+            <p class="selection-hint">Select an outfit for this event (optional)</p>
+            {{ form.outfit }}
+        </div>
+        
+        <div id="submit-button">
+            <input id="submit" type="submit" name="submit" value="Update Event">
+            <h5 id="cancel-btn">
+                <a id="cancel" href="{% url 'show_all_events' %}">Cancel</a> 
+            </h5>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

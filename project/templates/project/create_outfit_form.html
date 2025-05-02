@@ -1,0 +1,60 @@
+<!-- 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Date: 2025-02-27 
+Description: template of form to create an outfit for closet project
+-->
+{% extends 'project/base.html' %}
+
+{% block content %}
+
+<header>
+    <h1 id="header-name">Closet Manager</h1>
+</header>
+
+<div class="form-container">
+    <h1 id="form-header">Create New Outfit</h1>
+    
+    <form action="{% url 'create_outfit' %}" method="POST">
+        {% csrf_token %}
+        
+        <div class="form-group">
+            <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+            {{ form.name }}
+        </div>
+        
+        <div class="form-group clothing-selection">
+            <label>{{ form.clothing_items.label }}</label>
+            <p class="selection-hint">Select items to include in this outfit</p>
+            
+            <div class="clothing-items-grid">
+                {% for choice in form.clothing_items %}
+                    <div class="clothing-item-choice">
+                        {{ choice }}
+                        <label for="{{ choice.id_for_label }}">
+                            {% for item in form.clothing_items.queryset %}
+                                {% if item.id|stringformat:"s" == choice.choice_value %}
+                                    {% if item.image %}
+                                        <img src="{{ item.image.url }}" alt="{{ item.name }}" class="clothing-thumbnail">
+                                    {% else %}
+                                        <div class="no-image-small">No Image</div>
+                                    {% endif %}
+                                    <span class="item-name">{{ item.name }}</span>
+                                {% endif %}
+                            {% endfor %}
+                        </label>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <div id="submit-button">
+            <input id="submit" type="submit" name="submit" value="Create Outfit">
+            <h5 id="cancel-btn">
+                <a id="cancel" href="{% url 'show_all_outfits' %}">Cancel</a> 
+            </h5>
+        </div>
+    </form>
+</div>
+
+{% endblock %}

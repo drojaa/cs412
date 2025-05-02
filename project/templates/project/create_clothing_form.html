@@ -1,0 +1,28 @@
+<!-- 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Date: 2025-05-01
+Description: template of form to create a clothing item for closet project
+-->
+{% extends 'project/base.html' %}
+
+{% block content %}
+
+<header>
+    <h1 id="header-name">Closet Manager</h1>
+</header>
+<h1 id="form-header">Add New Clothing</h1>
+<form action="{% url 'create_clothing' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <table id="form">
+        {{ form.as_table }}
+    </table>
+    <div id="submit-button">
+        <input id="submit" type="submit" name="submit" value="Add Item">
+        <h5 id="cancel-btn">
+            <a id="cancel" href="{% url 'show_all_clothing_items' %}">Cancel</a> 
+        </h5>
+    </div>
+</form>
+
+{% endblock %}

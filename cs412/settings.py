@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "formdata",
     "mini_fb",
     "voter_analytics",
+    "project",
 ]
 
 MIDDLEWARE = [

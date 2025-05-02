@@ -1,0 +1,34 @@
+<!-- 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Date: 2025-05-02 
+Description: template to confirm deletion of an event
+-->
+{% extends 'project/base.html' %}
+
+{% block content %}
+
+<header>
+    <h1 id="header-name">Event Planner</h1>
+</header>
+
+<div class="form-container">
+    <h1 id="form-header">Delete Event</h1>
+    
+    <div class="delete-confirmation">
+        <p>Are you sure you want to delete the event "{{ event.name }}" on {{ event.event_date|date:"M d, Y" }}?</p>
+        
+        <form action="{% url 'delete_event' event.id %}" method="POST">
+            {% csrf_token %}
+            
+            <div id="submit-button">
+                <input id="submit" type="submit" name="submit" value="Delete Event" class="delete-button">
+                <h5 id="cancel-btn">
+                    <a id="cancel" href="{% url 'show_all_events' %}">Cancel</a> 
+                </h5>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

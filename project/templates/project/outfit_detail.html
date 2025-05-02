@@ -1,0 +1,75 @@
+<!-- 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Description: Template to display details of a single outfit
+-->
+{% extends 'project/base.html' %}
+
+{% block content %}
+<header>
+    <h1 id="header-name">Closet Manager</h1>
+</header>
+
+<div class="form-container">
+    <div class="detail-header">
+        <h2>{{ outfit.name }}</h2>
+        <p class="date-created">Created on {{ outfit.date_created|date:"F d, Y" }}</p>
+    </div>
+
+    <div class="detail-actions">
+        <a href="{% url 'show_all_outfits' %}" class="back-button" id="cancel">← Back to Outfits</a>
+        <div class="action-buttons">
+            <a href="{% url 'update_outfit' outfit.id %}" class="edit-button" id="crud">Edit Outfit</a>
+            <a href="{% url 'delete_outfit' outfit.id %}" class="delete-button" id="crud">Delete Outfit</a>
+        </div>
+    </div>
+
+    <div class="outfit-detail-container">
+        <h3>Items in this Outfit</h3>
+        <div class="clothing-items-grid">
+            {% for outfit_item in outfit.outfit_items.all %}
+                <div class="outfit-detail-item">
+                    {% if outfit_item.clothing_item.image %}
+                        <img src="{{ outfit_item.clothing_item.image.url }}" alt="{{ outfit_item.clothing_item.name }}" class="clothing-thumbnail">
+                    {% else %}
+                        <div class="no-image-small">No Image</div>
+                    {% endif %}
+                    <div class="item-details">
+                        <p class="item-name">{{ outfit_item.clothing_item.name }}</p>
+                        <p class="item-category">{{ outfit_item.clothing_item.get_type_display }}</p>
+                    </div>
+                </div>
+            {% empty %}
+                <p class="no-items-message">No items in this outfit</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="related-events">
+        <h3>Events using this outfit</h3>
+        <div class="events-grid">
+            {% for event in events %}
+                <a href="{% url 'event_detail' event.id %}" class="event-link">
+                    <div class="event-card">
+                        <div class="event-header">
+                            <h4>{{ event.name }}</h4>
+                        </div>
+                        <div class="event-details">
+                            <p><strong>Date:</strong> {{ event.event_date|date:"M d, Y" }}</p>
+                            <p><strong>Location:</strong> {{ event.location }}</p>
+                        </div>
+                    </div>
+                </a>
+            {% empty %}
+                <div class="no-items-message">
+                    <p>This outfit is not used in any events yet</p>
+                    <a href="{% url 'create_event' %}" class="add-item-button" style="margin-top: 15px; display: inline-flex;">
+                        <span class="plus-icon">+</span>
+                        <span class="button-text">Create New Event</span>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+<!-- 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Description: template to confirm deletion of an outfit
+-->
+{% extends 'project/base.html' %}
+
+{% block content %}
+
+<header>
+    <h1 id="header-name">Closet Manager</h1>
+</header>
+
+<div class="form-container">
+    <h1 id="form-header">Delete Outfit</h1>
+    
+    <div class="delete-confirmation">
+        <p>Are you sure you want to delete the outfit "{{ outfit.name }}"?</p>
+        
+        {% if events %}
+            <div class="warning-message">
+                <p><strong>Warning:</strong> This outfit is used in the following events:</p>
+                <ul>
+                    {% for event in events %}
+                        <li>{{ event.name }} ({{ event.event_date|date:"M d, Y" }})</li>
+                    {% endfor %}
+                </ul>
+                <p>Deleting this outfit will remove it from these events.</p>
+            </div>
+        {% endif %}
+        
+        <form action="{% url 'delete_outfit' outfit.id %}" method="POST">
+            {% csrf_token %}
+            <div id="submit-button">
+                <a href="{% url 'outfit_detail' outfit.id %}" id="cancel">Cancel</a>
+                <button type="submit" id="submit">Delete Outfit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

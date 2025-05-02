@@ -1,0 +1,96 @@
+<!-- 
+Author: Derinell Rojas
+Email: droja@bu.edu 
+Date: 2025-05-01
+Description: template to show all events for closet project
+-->
+{% extends 'project/base.html' %}
+
+{% block content %}
+<header>
+    <h1 id="header-name">My Events</h1>
+</header>
+
+<!-- Add Event button -->
+<div class="add-item-container">
+    <a href="{% url 'create_event' %}" class="add-item-button">
+        <span class="plus-icon">+</span>
+        <span class="button-text">Add Event</span>
+    </a>
+</div>
+
+<!-- Filter dropdown with server-side filtering -->
+<div class="filter-container">
+    <form method="get" action="{% url 'show_all_events' %}">
+        <label for="filter">Filter by:</label>
+        <select id="filter" name="filter">
+            <option value="all" {% if current_filter == 'all' %}selected{% endif %}>All Events</option>
+            <option value="upcoming" {% if current_filter == 'upcoming' %}selected{% endif %}>Upcoming Events</option>
+            <option value="past" {% if current_filter == 'past' %}selected{% endif %}>Past Events</option>
+            <option value="this_week" {% if current_filter == 'this_week' %}selected{% endif %}>This Week</option>
+            <option value="this_month" {% if current_filter == 'this_month' %}selected{% endif %}>This Month</option>
+        </select>
+        <button type="submit" class="filter-button">Apply Filter</button>
+    </form>
+</div>
+
+<div class="event-container" id="event-container">
+    {% if events %}
+        {% for event in events %}
+            <a href="{% url 'event_detail' event.id %}" class="event-card-link">
+                <div class="event-card {% if event.event_date >= today %}upcoming-event{% else %}past-event{% endif %}" data-id="{{ event.id }}">
+                    <!-- Event Name in top-left corner -->
+                    <div class="event-header">
+                        <h3 class="event-name">{{ event.name }}</h3>
+                        <span class="event-date">{{ event.event_date|date:"M d, Y" }}</span>
+                        <span class="event-location">{{ event.location }}</span>
+                    </div>
+                    
+                    <!-- Outfit assigned to this event (if any) -->
+                    <div class="event-outfit">
+                        {% if event.outfit %}
+                            <p class="outfit-label">Planned Outfit: {{ event.outfit.name }}</p>
+                            <div class="outfit-items">
+                                {% for outfit_item in event.outfit.outfit_items.all|slice:":3" %}
+                                    {% if outfit_item.clothing_item.image %}
+                                        <img src="{{ outfit_item.clothing_item.image.url }}" alt="{{ outfit_item.clothing_item.name }}" class="outfit-item-image">
+                                    {% else %}
+                                        <div class="no-image-small">No Image</div>
+                                    {% endif %}
+                                {% empty %}
+                                    <div class="no-items">No items in this outfit</div>
+                                {% endfor %}
+                                
+                                {% if event.outfit.outfit_items.count > 3 %}
+                                    <div class="more-items">+{{ event.outfit.outfit_items.count|add:"-3" }} more</div>
+                                {% endif %}
+                            </div>
+                        {% else %}
+                            <div class="no-outfit">
+                                <p>No outfit assigned to this event</p>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="event-actions">
+                        <a href="{% url 'update_event' event.id %}" class="action-link edit-link">Edit</a>
+                        <a href="{% url 'delete_event' event.id %}" class="action-link delete-link">Delete</a>
+                    </div>
+                    
+                    <div class="event-view">
+                        <span>View details →</span>
+                    </div>
+                </div>
+            </a>
+        {% endfor %}
+    {% else %}
+        <div class="empty-events">
+            <p>You don't have any events yet.</p>
+            <a href="{% url 'create_event' %}" class="add-item-button">
+                <span class="plus-icon">+</span>
+                <span class="button-text">Add Your First Event</span>
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
