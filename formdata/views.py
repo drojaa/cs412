@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.core.mail import send_mail
 
 # Create your views here.
 import time
@@ -53,5 +54,32 @@ def submit(request):
             "readyTime": readyTime, 
             "time": time.ctime()
         }
+  
+        message = (
+    f"Hi {request.POST['customerName']},\n\n"
+    f"Thank you so much for placing your order with Saweetie Treats! 💖\n"
+    f"We’re thrilled to start preparing your goodies — they’re going to be as sweet as you are.\n\n"
+    f"Here’s a quick summary of your order:\n"
+    f"- Customer Name: {request.POST['customerName']}\n"
+    f"- Email: {request.POST['customerEmail']}\n"
+    f"- Phone: {request.POST['customerPhone']}\n"
+    f"- Menu Item(s): {', '.join(menuItem)}\n"
+    f"- Today’s Special: {todaySpecial if todaySpecial else 'None'}\n\n"
+    f"We’ll send another update when your treats are ready to pick up.\n"
+    f"If you have any changes or special requests, just reply to this email — we’re happy to help!\n\n"
+    f"Wishing you a beautiful (and delicious) day! 🍓✨\n\n"
+    f"- The Saweetie Treats Team\n\n"
+    f"Order Time: {time.ctime()}\n"
+)
+        send_mail(
+    subject="New Saweetie Treat Order",
+    message=message,
+    from_email="derinellrojas@gmail.com",
+    recipient_list=[request.POST['customerEmail']]
+    )
+
+
+
+
 
     return render(request, template_name, context=context)
