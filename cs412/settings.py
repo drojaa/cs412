@@ -139,3 +139,7 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = "/droja/media/"
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://web-production-bbed.up.railway.app/",
+]
