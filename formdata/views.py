@@ -61,20 +61,10 @@ def submit(request):
         from_email='derinellrojas@gmail.com',  # or your verified sender
         to_emails=[request.POST.get('customerEmail')],
         subject='Your Saweetie Treat Order Confirmation 🍓',
-        html_content="""
-        <div style="font-family: Arial, sans-serif; color:#333;">
-            <em>The Saweetie Treats Team</em></p>
-        </div>
-        """.format(
-            name=request.POST.get("customerName", "Customer"),
-            email=request.POST.get("customerEmail", ""),
-            menu=", ".join(request.POST.getlist("menuItem")),
-            special=request.POST.get("todaySpecial", "None"),
-        ),
-    )
+        html_content='<strong>and easy to do anywhere, even with Python</strong>')
 
     try:
-        sg = SendGridAPIClient(os.environ.get("SENDGRID_API_KEY"))
+        sg = SendGridAPIClient(os.environ.get("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"))
         response = sg.send(message)
         print("Status:", response.status_code)
         print("Body:", response.body)
