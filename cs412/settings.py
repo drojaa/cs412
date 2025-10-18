@@ -142,4 +142,5 @@ MEDIA_URL = "/droja/media/"
 
 CSRF_TRUSTED_ORIGINS = [
     "https://web-production-bbed.up.railway.app/",
+    "http://127.0.0.1:8000/restaurant/order"
 ]
