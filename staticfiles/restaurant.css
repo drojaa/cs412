@@ -10,3 +10,262 @@ h1 {
     font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: lighter;
 }
+
+
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    margin: 0% 5% 0% 5%; 
+}
+
+
+main {
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    overflow-y: auto;
+}
+
+nav {
+    margin-top: 15px;
+    background-color: rgb(255, 255, 255);
+    list-style: none;
+    display: flex; 
+    justify-content: flex-end;
+}
+
+li {
+    padding-right: 18px;
+    flex-direction: row;
+}
+
+h1 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    background-color: rgb(244, 227, 249);
+    color: rgb(178, 153, 121); 
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: lighter;
+}
+
+#base {
+    text-decoration: none;
+    color: rgb(178, 153, 121); 
+    font-weight: lighter;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: small;
+ }
+
+footer {
+    text-align: center;
+    background-color: rgb(244, 227, 249);
+    color: rgb(178, 153, 121); 
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: lighter;
+}
+
+a {
+    color: rgb(178, 153, 121); 
+    text-decoration: underline;
+}
+
+/* CSS for Order Form */
+#survey-main {
+    height: 100vh;
+    background-color: rgb(244, 227, 249);
+}
+#survey-body { 
+    margin: 0% 5% 0% 5%; 
+    background-color: rgb(244, 227, 249);
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+
+
+#survey-header {
+    background-color: pink;
+    color: whitesmoke;
+    font-family: system-ui;
+    padding-left: 10px
+}
+
+#survey-h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+#survey-h5 {
+    margin-top: 12px;
+    background-color: rgb(255, 243, 247);
+    font-family: system-ui;
+    color: brown;
+    padding: 15px;
+    text-align: center;
+}
+
+#survey-form {
+    border: 1px solid rgb(243, 215, 251);
+    max-width: max-content;
+    margin: 35px auto;
+    background-color: rgb(249, 244, 251);
+    color: rgb(188, 156, 114);
+    font-weight: lighter;
+}
+
+#survey-table {
+    border: 1px solid rgb(243, 215, 251);
+    padding: 0;
+    margin: auto;
+    max-width: max-content;
+    border-spacing: 10px;
+    border-collapse: collapse;
+}
+
+.survey-td {
+    border: 1px solid rgb(243, 215, 251);
+    text-align: left;
+    padding: 8px;
+    vertical-align: top;
+   
+    color: rgb(147, 122, 90);
+    font-family: system-ui;
+    margin: auto;
+    justify-content: center;
+}
+
+label {
+    font-family: system-ui;
+    font-weight: bolder;
+    background-color: rgb(244, 227, 249);
+    margin-bottom: 5px;
+    display: block;
+    color: rgb(178, 153, 121); 
+}
+
+input[type="text"],
+select,
+textarea {
+    width: 35%;
+    padding: 8px;
+    font-family: system-ui;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+   
+}
+
+textarea {
+    height: 100px;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+input[type="submit"] {
+    display: block;
+    background-color: rgb(240, 214, 248);
+    text-decoration: none;
+    border: 1px rgb(178, 153, 121) solid;
+    padding: 15px;
+    padding-left: 25px;
+    padding-right: 25px;
+    font-family: system-ui;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: auto;
+    color: rgb(178, 153, 121); 
+}
+
+
+input[type="submit"]:hover {
+    background-color: rgb(246, 234, 250);
+}
+
+
+input {
+    margin-top: 10px;
+}
+
+  /* CSS for Tables*/
+table {
+    margin-top: 50px;
+    width: 100%;
+    border-collapse: collapse;
+    padding-bottom: 50px;
+  }
+  
+  td {
+    padding: 10px;
+    text-align: left;
+    text-align: center; 
+    vertical-align: middle;
+  }
+
+ 
+  
+  /* Top border for the table */
+  table, tr:first-child {
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: lighter;
+  }
+ 
+
+
+  img {
+    border: rgb(216, 198, 236) 5px solid;
+    max-width: 300px;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  #bolded {
+    font-weight: bold;
+  }
+
+  ul {
+    list-style-type: none;
+    text-align: left;
+    color: rgb(170, 139, 99);
+    
+  }
+
+  #welcome {
+    font-weight: bold;
+    color: rgb(170, 139, 99);
+    font-size: large;
+  }
+
+  #header-two{
+    font-weight: lighter;
+    font-size: small;
+  }
+
+
+  #form-styling {
+    text-align: center;
+    color: rgb(170, 139, 99);
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: rgb(249, 243, 251);
+    margin: auto;
+    width: max-content;
+    padding: 20px;
+  }
+
+  h4 {
+    color: rgb(170, 139, 99);
+  }
+
+  .confirmation {
+    text-align: center;
+  }
