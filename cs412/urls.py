@@ -19,7 +19,21 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+def home(request):
+    return HttpResponse("""
+        <h1>Welcome to my CS412 Portfolio</h1>
+        <ul>
+            <li><a href="/quotes/">Quotes Project</a></li>
+            <li><a href="/restaurant/">Restaurant Project</a></li>
+            <li><a href="/formdata/">Form Data Project</a></li>
+            <li><a href="/mini_fb/">Mini Facebook Project</a></li>
+            <li><a href="/voter_analytics/">Voter Analytics Project</a></li>
+            <li><a href="/project/">Final Project</a></li>
+        </ul>
+    """)
+
 urlpatterns = [
+    path('', home),
      path('admin/', admin.site.urls),
      path("quotes/", include("quotes.urls")),
      path("restaurant/", include("restaurant.urls")),
