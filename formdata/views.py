@@ -63,17 +63,6 @@ def submit(request):
         subject='Your Saweetie Treat Order Confirmation 🍓',
         html_content="""
         <div style="font-family: Arial, sans-serif; color:#333;">
-            <h2>Hi {name},</h2>
-            <p>Thank you for placing your order with <strong>Saweetie Treats</strong> 💖</p>
-            <p>We’re getting your goodies ready! Here’s a quick summary:</p>
-            <ul>
-                <li><strong>Name:</strong> {name}</li>
-                <li><strong>Email:</strong> {email}</li>
-                <li><strong>Menu Item(s):</strong> {menu}</li>
-                <li><strong>Today’s Special:</strong> {special}</li>
-            </ul>
-            <p>We’ll send another update when your treats are ready to pick up.</p>
-            <p>Wishing you a sweet day! 🍰✨<br>
             <em>The Saweetie Treats Team</em></p>
         </div>
         """.format(
