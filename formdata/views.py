@@ -58,20 +58,40 @@ def submit(request):
         }
 
     message = Mail(
-    from_email='derinellrojas@gmail.com',
-    to_emails=[request.POST['customerEmail']],
-    subject='Sending with Twilio SendGrid is Fun',
-    html_content='<strong>and easy to do anywhere, even with Python</strong>')
-try:
-    sg = SendGridAPIClient(os.environ.get('SENDGRID_API_KEY'))
-    # sg.set_sendgrid_data_residency("eu")
-    # uncomment the above line if you are sending mail using a regional EU subuser
-    response = sg.send(message)
-    print(response.status_code)
-    print(response.body)
-    print(response.headers)
-except Exception as e:
-    print(e.message)
+        from_email='derinellrojas@gmail.com',  # or your verified sender
+        to_emails=[request.POST.get('customerEmail')],
+        subject='Your Saweetie Treat Order Confirmation 🍓',
+        html_content="""
+        <div style="font-family: Arial, sans-serif; color:#333;">
+            <h2>Hi {name},</h2>
+            <p>Thank you for placing your order with <strong>Saweetie Treats</strong> 💖</p>
+            <p>We’re getting your goodies ready! Here’s a quick summary:</p>
+            <ul>
+                <li><strong>Name:</strong> {name}</li>
+                <li><strong>Email:</strong> {email}</li>
+                <li><strong>Menu Item(s):</strong> {menu}</li>
+                <li><strong>Today’s Special:</strong> {special}</li>
+            </ul>
+            <p>We’ll send another update when your treats are ready to pick up.</p>
+            <p>Wishing you a sweet day! 🍰✨<br>
+            <em>The Saweetie Treats Team</em></p>
+        </div>
+        """.format(
+            name=request.POST.get("customerName", "Customer"),
+            email=request.POST.get("customerEmail", ""),
+            menu=", ".join(request.POST.getlist("menuItem")),
+            special=request.POST.get("todaySpecial", "None"),
+        ),
+    )
+
+    try:
+        sg = SendGridAPIClient(os.environ.get("SENDGRID_API_KEY"))
+        response = sg.send(message)
+        print("Status:", response.status_code)
+        print("Body:", response.body)
+        print("Headers:", response.headers)
+    except Exception as e:
+        print("SendGrid error:", str(e))
 
 
 
