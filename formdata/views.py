@@ -57,20 +57,6 @@ def submit(request):
             "time": time.ctime()
         }
 
-    message = Mail(
-        from_email='derinellrojas@gmail.com',  # or your verified sender
-        to_emails='droja@bu.edu',
-        subject='Your Saweetie Treat Order Confirmation 🍓',
-        html_content='<strong>and easy to do anywhere, even with Python</strong>')
-
-    try:
-        sg = SendGridAPIClient(os.environ.get("SENDGRID_API_KEY"))
-        response = sg.send(message)
-        print("Status:", response.status_code)
-        print("Body:", response.body)
-        print("Headers:", response.headers)
-    except Exception as e:
-        print("SendGrid error:", str(e))
 
 
 
