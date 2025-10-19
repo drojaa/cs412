@@ -1,16 +1,12 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "cs412/wsgi.py",
-        "use": "@vercel/python",
-        "config": { "runtime": "python3.9" }
-      }
-    ],
-    "routes": [
-      { "src": "/static/(.*)", "dest": "/static/$1" },
-      { "src": "/(.*)", "dest": "cs412/wsgi.py" }
-    ],
-    "buildCommand": "pip install -r requirements.txt && python manage.py collectstatic --noinput"
-  }
-  
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "dist" }
+    }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}
