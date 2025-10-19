@@ -1,2 +1,12 @@
+# Environment variables
+.env
+*.env
+
+# Python / Django
+__pycache__/
+*.pyc
 db.sqlite3
-sendgrid.env
+
+# Secrets
+*.pem
+*.key
