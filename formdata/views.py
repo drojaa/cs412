@@ -59,12 +59,12 @@ def submit(request):
 
     message = Mail(
         from_email='derinellrojas@gmail.com',  # or your verified sender
-        to_emails=[request.POST.get('customerEmail')],
+        to_emails='droja@bu.edu',
         subject='Your Saweetie Treat Order Confirmation 🍓',
         html_content='<strong>and easy to do anywhere, even with Python</strong>')
 
     try:
-        sg = SendGridAPIClient(os.environ.get("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"))
+        sg = SendGridAPIClient(os.environ.get("SENDGRID_API_KEY"))
         response = sg.send(message)
         print("Status:", response.status_code)
         print("Body:", response.body)
