@@ -27,7 +27,7 @@ def order(request):
     return render(request, template_name, context)
 #view function for confirmation page
 from django.conf import settings
-from restaurant import mailer  # Ensure mailer.py exists in restaurant app
+from restaurant import mail
 
 def confirmation(request):
 
